@@ -4,12 +4,12 @@ markdown: redcarpet
 
 # 作者信息
 author: 
-  name: Anya Lin
-  email: lay.1010@hotmail.com
-  link: http://painterlin.com
-  weibo: http://weibo.com/orangeissweet
-  github: http://github.com/lay1010
-  music: http://site.douban.com/linanya
+  name: Shuzhou Zhang
+  email: zhangshuzhou.hi@163.com
+  link: http://zhangshuzhou.cn
+#  weibo: http://weibo.com/orangeissweet
+  github: http://github.com/shuzhou
+#  music: http://site.douban.com/linanya
   linkedin: https://www.linkedin.com/pub/anya-lin/81/91/232
 
 # 站点信息
@@ -23,14 +23,14 @@ favicon: /public/img/deer3.png
 # google analytics 设置
 ga:
   id: UA-54262064-1 
-  url: painterlin.com
+  url: zhangshuzhou.cn
 
 # disqus 设置
 disqus:
-  shortname: painterlin
+  shortname: joe
 
 # 主题设置，自动激活某个标签
-active: 读书
+active: linux
 
 # 首页除了最新文章外显示分类
 cates: 

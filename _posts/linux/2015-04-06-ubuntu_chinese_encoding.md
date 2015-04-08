@@ -1,0 +1,95 @@
+---
+layout: post
+title: ubuntu中文编码配置
+category: 环境配置
+tags: Optimization
+keywords: linux，环境配置
+description: 
+---
+
+
+[TOC]
+
+
+ linux服务器对中文的支持是一个一直让大家DT的问题，从系统语言配置、中文文件名支持到数据库乱码等偶会经常遇到。所以今天把编码中遇到的问题做一个简单的汇总。
+
+###**1. 系统环境语言**
+ 需要修改文件/etc/default/locale，输入命令如下：
+
+```
+sudo vim /etc/default/locale
+```
+
+- 中文设置如下：
+
+```
+LANG="zh_CN.UTF-8"
+LANGUAGE="zh_CN:zh"
+```
+
+- 英文设置如下
+
+```
+LANG="en_US.UTF-8"
+LANGUAGE="en_US:en"
+```
+
+>    **注：**重启服务器生效
+
+
+###**2. 终端中文显示乱码**
+
+ 需要修改的文件有两处：一个是/etc/environment，另一个是/var/lib/locales/supported.d/local
+
+- 打开/etc/environment,在末尾添加如下：
+
+```
+LANG="zh_CN.UTF-8"
+LANGUAGE="zh_CN:zh:en_US:en"
+```
+
+-  打开/var/lib/locales/supported.d/local修改为如下：
+
+```
+en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+```
+
+>    **注：**
+>     **1.** 需要输入`source /etc/environment` 使得第一个文件配置生效
+>     **2.** 输入`locale-gen ` 使得第二个配置生效
+>     **3.** 原来存在乱码的文件依旧会乱码，重新上传或者新建的中文文件显示正常，无乱码问题
+
+经过该步骤的修改，在系统输入locale显示如下:
+
+```
+LANG=en_US.UTF-8
+LANGUAGE=en_US:en
+LC_CTYPE="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_PAPER="en_US.UTF-8"
+LC_NAME="en_US.UTF-8"
+LC_ADDRESS="en_US.UTF-8"
+LC_TELEPHONE="en_US.UTF-8"
+LC_MEASUREMENT="en_US.UTF-8"
+LC_IDENTIFICATION="en_US.UTF-8"
+LC_ALL=
+```
+>    不清楚为啥是en_US还能正常显示中文
+
+###**3. 数据库乱码：**
+
+- 其中数据库乱码需要设置四个地方
+    -  确保所在系统能够支持中文编码显示，即经过了第二步配置
+    -  确保Mysql的编码是UTF-8【意思是MYSQL软件编码为UTF-8】
+    - 确保所使用的数据库的编码是UTF-8【即database的编码是UTF-8】
+    - 确保该数据库中每张表的编码是UTF-8【即table的编码是UTF-8】
+
+
+>   **说明：**
+>    1. 以上环境配置已经在本机测试成功
+>    2. 关于环境配置的具体原理，至今没有了解清楚，希望懂得人给予讲解或者贴出相关链接，谢谢
