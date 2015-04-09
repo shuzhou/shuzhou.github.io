@@ -21,7 +21,7 @@ description:
 
 ###**3. 字符串**
 
-####**3.1. 字符串表示 **
+####**3.1. 字符串表示**
 
  -  Python中没有表示单个常量字符串类型的char类型，其可以用单引号‘’、双引号“”来表示一个字符串，也可以用三引号来表示一个多行字符串 
  -  Java中char表示单个字符，String表示一个字符串，常量字符字符串用双引号“”表示
@@ -36,7 +36,7 @@ description:
 -  python中还有可以在字符串前加前缀r或R：表示自然字符串，即不对字符串做转移处理(比java方便
 -  Python可以加前缀u或U：表示unicode字符串
 
-###**4. 操作符 **
+###**4. 操作符**
 
 - Python中**表示幂计算，如果 X**y表示 $X^y$
 - Python中//表示整除，即商的整数部分
@@ -46,7 +46,7 @@ description:
 
 - Python中继承示例如下：
 
-```
+```python
 class Fruit:
       def __init__(self, color):
            self.color = color
