@@ -46,7 +46,7 @@ description:
 
 - Python中继承示例如下：
 
-```python
+```
 class Fruit:
       def __init__(self, color):
            self.color = color
@@ -58,14 +58,13 @@ class Fruit:
 
 
 ```
-#!python
 class Apple(Fruit):                               #继承了父类
       def __init__(self, color):                  
            Fruit.__init__(self, color)            #显示调用父类的__init__方法（Python不会自动调用基本类的__init__()）
            print "apple's color: %s" % self.color
 ```
 
-```#!python
+```
 class Banana(Fruit):                              #继承了父类
       def __init__(self, color):                  
            Fruit.__init__(self, color)            #显示调用父类的__init__方法
@@ -82,7 +81,6 @@ Java中的接口接口是为了解决不能多继承的问题，由于Python中�
 例如：
 
 ```
-#!Python
     class Fruit():  
         def add(self):  
              pass  
