@@ -16,7 +16,7 @@ description:
 
 ###**2. 数**
 
-- python只有四种数据：证书，长整数、浮点数和__复数__
+- python只有四种数据：整数，长整数、浮点数和__复数__
 - java则有char，short,byte，int，long，float,double类型
 
 ###**3. 字符串**
