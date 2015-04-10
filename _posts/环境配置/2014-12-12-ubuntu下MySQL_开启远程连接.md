@@ -2,9 +2,9 @@
 layout: post
 title: ubuntu下MySQL开启远程连接
 category: 环境配置
-tags: java
+tags: linux
 keywords: ubuntu MySQL
-description: 
+description:ubuntu下MySQL开发远程连接 
 ---
 
 ###1. mysql安装后密码无法登陆问题
