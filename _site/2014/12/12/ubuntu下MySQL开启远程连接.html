@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>ubuntu下MySQL开启远程连接 | 张书洲的博客</title>
+<meta name="author" content="Shuzhou Zhang">
+
+  <meta name="keywords" content="ubuntu MySQL">
+
+
+<link rel="shortcut icon" href="/public/img/deer3.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/public/css/bootstrap.css">
+<link rel="stylesheet" href="/public/css/font-awesome.css">
+<link rel="stylesheet" href="/public/js/prettify/prettify.css">
+<link rel="stylesheet" href="/public/css/base.css">
+<link href="/pages/atom.xml" rel="alternate" title="张书洲的博客" type="application/atom+xml">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 col-sm-13 col-xs-13 aside visible-md visible-lg">
+  <div class="row">
+    <div class="col-md-2 col-xs-2 aside1">
+      <br>
+      <a class="pjaxlink" href="/"><img src="/public/img/deer3.png" class="img-ronuded avatar" style="border-width:0px; border-color:#000"></a>
+      <br><br><br><br>
+      <ul class="nav nav-pills nav-stacked">
+             <!-- 这里是aside1的读书、生活、科研、技术、绘画-->
+         <li><a href="#配置" data-toggle="tab">配置</a></li>
+             <!-- 这里是aside1的读书、生活、科研、技术、绘画-->
+         <li><a href="#python" data-toggle="tab">python</a></li>
+        
+        <li><a href="#tags" data-toggle="tab">标签</a></li>  
+        <li><a class="pjaxlink" href="/pages/archive.html">归档</a></li>
+        <li><a class="pjaxlink" href="/pages/about.html">关于</a></li>  
+        <!-- <li><a href="#tags" data-toggle="tab"><i class="fa fa-tags fa-lg"></i></a></li>
+        <li><a class="pjaxlink" href="/pages/archive.html"><i class="fa fa-archive fa-lg"></i></a></li>
+        <li><a class="pjaxlink" href="/pages/about.html"><i class="fa fa-user fa-lg"></i></a></li>
+        这是原来现实汉字的代码，我改为了图标 -->
+      </ul>
+      <div class="aside1_bottom">
+        <table class="table table-condensed">
+          <tr>
+            <td><a href="/pages/atom.xml" target="_blank"><i class="fa fa-rss fa-lg" style="color:#fff;"></i></a></td>
+            <td><a href="mailto:zhangshuzhou.hi@163.com"><i class="fa fa-envelope-o fa-lg" style="color:#fff;"></i></a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-10 col-xs-10 aside2">
+      <div class="row">
+        <div class="tab-content"> 
+           
+            <div class="tab-pane" id="配置">
+              <div class="list-group">
+                <!--<h2 class="center">配置</h2>-->     <!--原来aside2上面的大标题-->
+                
+                  <a href="/2015/04/06/ubuntu%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E9%85%8D%E7%BD%AE.html" class="list-group-item-lay pjaxlink">ubuntu中文编码配置</a>
+                
+                  <a href="/2014/12/12/ubuntu%E4%B8%8BMySQL%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.html" class="list-group-item-lay pjaxlink">ubuntu下MySQL开启远程连接</a>
+                
+                  <a href="/2014/02/11/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html" class="list-group-item-lay pjaxlink">Java开发环境配置及常见问题</a>
+                
+              </div>
+            </div>
+           
+            <div class="tab-pane" id="python">
+              <div class="list-group">
+                <!--<h2 class="center">python</h2>-->     <!--原来aside2上面的大标题-->
+                
+                  <a href="/2015/04/05/Python%E5%92%8CJava%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%AF%94.html" class="list-group-item-lay pjaxlink">Python和Java语言对比</a>
+                
+              </div>
+            </div>
+                
+          <div class="tab-pane" id="tags">
+            <div class="panel-group" id="accordion">
+              <!--<h2 class="center">标签</h2>-->
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#环境配置">环境配置</a>
+                      <span class="badge pull-right">3</span>
+                    </h4>
+                  </div>
+                  <div id="环境配置" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/04/06/ubuntu%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E9%85%8D%E7%BD%AE.html' class="list-group-item pjaxlink">
+                        ubuntu中文编码配置
+                      </a>
+                    
+                      <a  href='/2014/12/12/ubuntu%E4%B8%8BMySQL%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.html' class="list-group-item pjaxlink">
+                        ubuntu下MySQL开启远程连接
+                      </a>
+                    
+                      <a  href='/2014/02/11/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html' class="list-group-item pjaxlink">
+                        Java开发环境配置及常见问题
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#开发语言">开发语言</a>
+                      <span class="badge pull-right">2</span>
+                    </h4>
+                  </div>
+                  <div id="开发语言" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/04/05/Python%E5%92%8CJava%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%AF%94.html' class="list-group-item pjaxlink">
+                        Python和Java语言对比
+                      </a>
+                    
+                      <a  href='/2014/02/11/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html' class="list-group-item pjaxlink">
+                        Java开发环境配置及常见问题
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#linux">linux</a>
+                      <span class="badge pull-right">2</span>
+                    </h4>
+                  </div>
+                  <div id="linux" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/04/06/ubuntu%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E9%85%8D%E7%BD%AE.html' class="list-group-item pjaxlink">
+                        ubuntu中文编码配置
+                      </a>
+                    
+                      <a  href='/2014/12/12/ubuntu%E4%B8%8BMySQL%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.html' class="list-group-item pjaxlink">
+                        ubuntu下MySQL开启远程连接
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="col-md-13 col-lg-13 col-sm-13 col-xs-13 aside3">
+        <div id="container">
+          <div id="pjax">
+            <div class="row">
+  <div class="col-md-13 aside3-title">
+    <br>
+    <h2 id="#identifier">ubuntu下MySQL开启远程连接</h2>
+    2014年12月12日
+  </div>
+  <div class="col-md-13 aside3-content">
+    <hr>
+    <div id="content">
+      <h3>1. mysql安装后密码无法登陆问题</h3>
+
+<ul>
+<li>这时你需要进入/etc/mysql目录下，然后查看里面的用户名和密码，然后输入<code>sudo vim debian.cnf</code></li>
+<li>使用这个文件中的用户名和密码进入mysql,假如debian.cnf中的用户名为debian-sys-maint,则：<code>mysql -u debian-sys-maint -p</code></li>
+<li>按回车，这时需要你输入密码，复制debian.cnf中的密码（不要手动输入，因为容易产生错误）。</li>
+<li>然后修改root用户的密码，如下操作</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">use mysql
+show tables;//查看mysql数据库中的表，会看到一个user表。
+select * from user;//查看一下这个表中是否有root用户，如果有：
+update user set password=password(&quot;root&quot;) whereuser=&quot;root&quot;;//更改root用户进入mysql的密码。
+flush privileges;
+</code></pre></div>
+<ul>
+<li>quit退出mysql,然后用root登录 <code>mysql -u root -proot</code></li>
+</ul>
+
+<blockquote>
+<p>如果user表中没有root用户：用grant命令<code>grant all privileges on *.* to root@localhost identified by&#39;123&#39;</code>
+其中<em>.</em>代表所有数据库中的所有表，即database name.your table&#39;123&#39;表示为root用户的密码。</p>
+
+<p>然后输入<code>flush privileges;</code></p>
+
+<p>然后输入<code>select * from user;</code>查看一下user这个表中是否有root用户。如果有表示添加成功。</p>
+</blockquote>
+
+<h3>2. 配置远程连接</h3>
+
+<ul>
+<li><code>vim /etc/mysql/my.cnf</code> 找到bind-address = 127.0.0.1</li>
+<li>注释掉这行，如：#bind-address = 127.0.0.1 或者改为： bind-address = 0.0.0.0，此表示允许任意IP访问；或者自己指定一个IP地址。</li>
+<li>重启 MySQL：<code>sudo /etc/init.d/mysql restart</code></li>
+<li>授权用户能进行远程连接 
+
+<ul>
+<li><code>grant all privileges on *.* to root@&quot;%&quot; identified by &quot;password&quot; with grant option;</code></li>
+<li><code>flush privileges;</code>
+&gt; 第一行命令解释如下，<em>.</em>：第一个<em>代表数据库名；第二个</em>代表表名。这里的意思是所有数据库里的所有表都授权给用户。root：授予root账号。“%”：表示授权的用户IP可以指定，这里代表任意的IP地址都能访问MySQL数据库。“password”：分配账号对应的密码，这里密码自己替换成你的mysql root帐号密码。</li>
+</ul></li>
+</ul>
+
+    </div>
+    <hr>
+    <div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1919735"></script>
+<!-- UY END -->
+
+  </div>
+  <!-- 目录 -->
+  <div id="content_table" style="position:fixed;right:20px;top:120px;display:none;">
+    <div class="panel panel-success">
+      <div class="panel-body" id="nav"></div>
+    </div>
+  </div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="position:fixed;right:15px;top:62px;">
+  <button id="content_btn" class="btn btn-primary" style="width:43px; height:34px;">
+    <i class="fa fa-lg fa-plus"></i>
+  </button>
+</div>
+<div style="position:fixed;right:15px;top:20px;">
+  <button id="nav_btn" class="btn btn-primary">
+    <i class="fa fa-lg fa-navicon"></i>
+  </button>
+</div>
+<script type="text/javascript" src="/public/js/jquery.js"></script>
+<script type="text/javascript" src="/public/js/bootstrap.js"></script>
+<script src="/public/js/jquery.pjax.js"></script>
+<script src="/public/js/prettify/prettify.js"></script>
+<script src="/public/js/base.js"></script>
+<script src="/public/js/jquery.scrollUp.js"></script>
+<script>
+    $('a[href="#配置"]').tab('show');
+</script>
+
+
+<!--button是右上方导航和显示目录的按钮-->
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-54262064-1', 'zhangshuzhou.cn');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>

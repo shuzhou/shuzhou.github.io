@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>张书洲的博客</title>
+    <link></link>
+    <description>My personal blog</description>
+    
+      <item>
+        <title>ubuntu中文编码配置</title>
+        <link>/2015/04/06/ubuntu%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E9%85%8D%E7%BD%AE.html</link>
+        <guid isPermaLink="true">/2015/04/06/ubuntu%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E9%85%8D%E7%BD%AE.html</guid>
+        <pubDate>Mon, 06 Apr 2015 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;linux服务器对中文的支持是一个一直让大家DT的问题，从系统语言配置、中文文件名支持到数据库乱码等偶会经常遇到。所以今天把编码中遇到的问题做一个简单的汇总。&lt;/p&gt;
+
+&lt;h3&gt;&lt;strong&gt;1. 系统环境语言&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;需要修改文件/etc/default/locale，输入命令如下：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo vim /etc/default/locale
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;中文设置如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;LANG=&amp;quot;zh_CN.UTF-8&amp;quot;
+LANGUAGE=&amp;quot;zh_CN:zh&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;英文设置如下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;LANG=&amp;quot;en_US.UTF-8&amp;quot;
+LANGUAGE=&amp;quot;en_US:en&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注：&lt;/strong&gt;重启服务器生效&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;&lt;strong&gt;2. 终端中文显示乱码&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;需要修改的文件有两处：一个是/etc/environment，另一个是/var/lib/locales/supported.d/local&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;打开/etc/environment,在末尾添加如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;LANG=&amp;quot;zh_CN.UTF-8&amp;quot;
+LANGUAGE=&amp;quot;zh_CN:zh:en_US:en&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt; 打开/var/lib/locales/supported.d/local修改为如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; 需要输入&lt;code&gt;source /etc/environment&lt;/code&gt; 使得第一个文件配置生效  &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2.&lt;/strong&gt; 输入&lt;code&gt;locale-gen&lt;/code&gt; 使得第二个配置生效&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3.&lt;/strong&gt; 原来存在乱码的文件依旧会乱码，重新上传或者新建的中文文件显示正常，无乱码问题&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;经过该步骤的修改，在系统输入locale显示如下:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;LANG=en_US.UTF-8
+LANGUAGE=en_US:en
+LC_CTYPE=&amp;quot;en_US.UTF-8&amp;quot;
+LC_NUMERIC=&amp;quot;en_US.UTF-8&amp;quot;
+LC_TIME=&amp;quot;en_US.UTF-8&amp;quot;
+LC_COLLATE=&amp;quot;en_US.UTF-8&amp;quot;
+LC_MONETARY=&amp;quot;en_US.UTF-8&amp;quot;
+LC_MESSAGES=&amp;quot;en_US.UTF-8&amp;quot;
+LC_PAPER=&amp;quot;en_US.UTF-8&amp;quot;
+LC_NAME=&amp;quot;en_US.UTF-8&amp;quot;
+LC_ADDRESS=&amp;quot;en_US.UTF-8&amp;quot;
+LC_TELEPHONE=&amp;quot;en_US.UTF-8&amp;quot;
+LC_MEASUREMENT=&amp;quot;en_US.UTF-8&amp;quot;
+LC_IDENTIFICATION=&amp;quot;en_US.UTF-8&amp;quot;
+LC_ALL=
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不清楚为啥是en_US还能正常显示中文&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;&lt;strong&gt;3. 数据库乱码：&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;其中数据库乱码需要设置四个地方
+
+&lt;ul&gt;
+&lt;li&gt; 确保所在系统能够支持中文编码显示，即经过了第二步配置&lt;/li&gt;
+&lt;li&gt; 确保Mysql的编码是UTF-8【意思是MYSQL软件编码为UTF-8】&lt;/li&gt;
+&lt;li&gt;确保所使用的数据库的编码是UTF-8【即database的编码是UTF-8】&lt;/li&gt;
+&lt;li&gt;确保该数据库中每张表的编码是UTF-8【即table的编码是UTF-8】&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; 以上环境配置已经在本机测试成功&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2.&lt;/strong&gt; 关于环境配置的具体原理，至今没有了解清楚，希望懂得人给予讲解或者贴出相关链接，谢谢&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      </item>
+    
+      <item>
+        <title>Python和Java语言对比</title>
+        <link>/2015/04/05/Python%E5%92%8CJava%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%AF%94.html</link>
+        <guid isPermaLink="true">/2015/04/05/Python%E5%92%8CJava%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%AF%94.html</guid>
+        <pubDate>Sun, 05 Apr 2015 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;现在一直习惯于用SSH做WEB开发，但是最近愈来愈感觉对于小的项目工程，Java的SSH框架过于沉重，所以经过调研发现Python语言比较方便，所以最近把python语法看了一遍，故把Python和Java中异同做下对比。&lt;/p&gt;
+
+&lt;h3&gt;&lt;strong&gt;1. 缩进&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;python需要用缩进来识别语句之前的逻辑块，需要在行尾加上‘：’表示接下来缩进格式相同的语句是一个语句块【python语句末尾可以不加&amp;#39;;&amp;#39;,但是必须&lt;strong&gt;采用缩进&lt;/strong&gt;】&lt;/li&gt;
+&lt;li&gt;Java主要用‘{}’和‘；’来识别，不强制要求缩进（同样建议使用缩进格式）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&lt;strong&gt;2. 数&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;python只有四种数据：整数，长整数、浮点数和&lt;strong&gt;复数&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;java则有char，short,byte，int，long，float,double类型&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&lt;strong&gt;3. 字符串&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;h4&gt;&lt;strong&gt;3.1. 字符串表示&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt; Python中没有表示单个常量字符串类型的char类型，其可以用单引号‘’、双引号“”来表示一个字符串，也可以用三引号来表示一个多行字符串 &lt;/li&gt;
+&lt;li&gt; Java中char表示单个字符，String表示一个字符串，常量字符字符串用双引号“”表示&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;&lt;strong&gt;3.2. 多行字符串&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Python在字符串末尾加上反斜杠（/）表示字符串在下一行继续&lt;/li&gt;
+&lt;li&gt;Java用加号（+）表示字符串在下一行继续&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;&lt;strong&gt;3.3. Python中其它的表示方法&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt; python中还有可以在字符串前加前缀r或R：表示自然字符串，即不对字符串做转移处理(比java方便&lt;/li&gt;
+&lt;li&gt; Python可以加前缀u或U：表示unicode字符串&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&lt;strong&gt;4. 操作符&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Python中&lt;strong&gt;表示幂计算，如果 X&lt;/strong&gt;y表示 $X^y$&lt;/li&gt;
+&lt;li&gt;Python中//表示整除，即商的整数部分&lt;/li&gt;
+&lt;li&gt;Python中~表示按位翻转，~x就是-(x+1)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&lt;strong&gt;5. 接口与继承&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Python中继承示例如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+           &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;fruit&amp;#39;s color: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;
+
+      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;grow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;grow...&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;class Apple(Fruit):                               #继承了父类
+      def __init__(self, color):                  
+           Fruit.__init__(self, color)            #显示调用父类的__init__方法（Python不会自动调用基本类的__init__()）
+           print &amp;quot;apple&amp;#39;s color: %s&amp;quot; % self.color
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;class Banana(Fruit):                              #继承了父类
+      def __init__(self, color):                  
+           Fruit.__init__(self, color)            #显示调用父类的__init__方法
+           print &amp;quot;banana&amp;#39;s color:%s&amp;quot; %s self.color
+
+      def grow(self):                             #覆盖了父类的grow方法
+           print &amp;quot;banana grow...&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; Python 中的_&lt;em&gt;init_&lt;/em&gt;（）方法类似与Java中的构造函数，Java构造函数中的self默认存在，不需要在构造函数声明的时候进行显示指明，但是Python需要在_&lt;em&gt;init&lt;/em&gt;_()函数中显示指明（但是ID调用时不用显示进行self传递）&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Python中的接口
+Java中的接口接口是为了解决不能多继承的问题，由于Python中支持多继承，所以Python中没有接口的概念。
+由于接口是特殊的抽象类，接口没有数据成员，而是一组未实现的方法的集合。要想实现接口的功能，完全可以用一个空的类来做。
+例如：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    class Fruit():  
+        def add(self):  
+             pass  
+        def remove(self):  
+             pass  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;&lt;strong&gt;6. 对象的序列化表示&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Python中可以使用str（）或repr（）函数来实现对象的序列化&lt;/li&gt;
+&lt;li&gt;Java中通过toString()方法来实现对象的序列化&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&lt;strong&gt;7. 参数传递中的*和*&lt;/strong&gt;*&lt;/h3&gt;
+</description>
+      </item>
+    
+      <item>
+        <title>ubuntu下MySQL开启远程连接</title>
+        <link>/2014/12/12/ubuntu%E4%B8%8BMySQL%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.html</link>
+        <guid isPermaLink="true">/2014/12/12/ubuntu%E4%B8%8BMySQL%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.html</guid>
+        <pubDate>Fri, 12 Dec 2014 00:00:00 +0800</pubDate>
+        <description>&lt;h3&gt;1. mysql安装后密码无法登陆问题&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这时你需要进入/etc/mysql目录下，然后查看里面的用户名和密码，然后输入&lt;code&gt;sudo vim debian.cnf&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用这个文件中的用户名和密码进入mysql,假如debian.cnf中的用户名为debian-sys-maint,则：&lt;code&gt;mysql -u debian-sys-maint -p&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;按回车，这时需要你输入密码，复制debian.cnf中的密码（不要手动输入，因为容易产生错误）。&lt;/li&gt;
+&lt;li&gt;然后修改root用户的密码，如下操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;use mysql
+show tables;//查看mysql数据库中的表，会看到一个user表。
+select * from user;//查看一下这个表中是否有root用户，如果有：
+update user set password=password(&amp;quot;root&amp;quot;) whereuser=&amp;quot;root&amp;quot;;//更改root用户进入mysql的密码。
+flush privileges;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;quit退出mysql,然后用root登录 &lt;code&gt;mysql -u root -proot&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;如果user表中没有root用户：用grant命令&lt;code&gt;grant all privileges on *.* to root@localhost identified by&amp;#39;123&amp;#39;&lt;/code&gt;
+其中&lt;em&gt;.&lt;/em&gt;代表所有数据库中的所有表，即database name.your table&amp;#39;123&amp;#39;表示为root用户的密码。&lt;/p&gt;
+
+&lt;p&gt;然后输入&lt;code&gt;flush privileges;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;然后输入&lt;code&gt;select * from user;&lt;/code&gt;查看一下user这个表中是否有root用户。如果有表示添加成功。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;2. 配置远程连接&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vim /etc/mysql/my.cnf&lt;/code&gt; 找到bind-address = 127.0.0.1&lt;/li&gt;
+&lt;li&gt;注释掉这行，如：#bind-address = 127.0.0.1 或者改为： bind-address = 0.0.0.0，此表示允许任意IP访问；或者自己指定一个IP地址。&lt;/li&gt;
+&lt;li&gt;重启 MySQL：&lt;code&gt;sudo /etc/init.d/mysql restart&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;授权用户能进行远程连接 
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;grant all privileges on *.* to root@&amp;quot;%&amp;quot; identified by &amp;quot;password&amp;quot; with grant option;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;flush privileges;&lt;/code&gt;
+&amp;gt; 第一行命令解释如下，&lt;em&gt;.&lt;/em&gt;：第一个&lt;em&gt;代表数据库名；第二个&lt;/em&gt;代表表名。这里的意思是所有数据库里的所有表都授权给用户。root：授予root账号。“%”：表示授权的用户IP可以指定，这里代表任意的IP地址都能访问MySQL数据库。“password”：分配账号对应的密码，这里密码自己替换成你的mysql root帐号密码。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      </item>
+    
+      <item>
+        <title>Java开发环境配置及常见问题</title>
+        <link>/2014/02/11/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html</link>
+        <guid isPermaLink="true">/2014/02/11/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html</guid>
+        <pubDate>Tue, 11 Feb 2014 00:00:00 +0800</pubDate>
+        <description>&lt;h3&gt;&lt;strong&gt;1. 下载和安装JDK&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;略&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&lt;strong&gt;2. 配置环境变量&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;我的电脑-&amp;gt;属性-&amp;gt;高级系统设置-&amp;gt;环境变量&lt;/li&gt;
+&lt;li&gt;在“系统变量”中，设置3项属性，JAVA_HOME,PATH,CLASSPATH(大小写无所谓),若已存在则点击“编辑”，不存在则点击“新建”；&lt;/li&gt;
+&lt;li&gt;JAVA&lt;em&gt;HOME指明JDK安装路径，就是刚才安装时所选择的路径D:/java/jdk1.5.0&lt;/em&gt;08，此路径下包括lib，bin，jre等文件夹（此变量最好设置，因为以后运行tomcat，eclipse等都需要依*此变量）
+
+&lt;ul&gt;
+&lt;li&gt;Path使得系统可以在任何路径下识别java命令，设为：%JAVA&lt;em&gt;HOME%/bin;%JAVA&lt;/em&gt;HOME%/jre/bin
+&amp;gt; %JAVA&lt;em&gt;HOME%就是引用前面指定的JAVA&lt;/em&gt;HOME；&lt;/li&gt;
+&lt;li&gt;CLASSPATH为java加载类(class or lib)路径，只有类在classpath中，java命令才能识别，设为：.;%JAVA&lt;em&gt;HOME%/lib/dt.jar;%JAVA&lt;/em&gt;HOME%/lib/tools.jar (要加.表示当前路径)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;“开始”－&amp;gt;;“运行”，键入“cmd”；&lt;/li&gt;
+&lt;li&gt;键入命令“java -version”，“java”，“javac”几个命令，出现画面，说明环境变量配置成功；&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;&lt;strong&gt;3. Tomcat安装&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;略&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&lt;strong&gt;4. Myeclipse或者eclipse安装&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;需要做的工作如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;配置Tomcat服务器：略&lt;/li&gt;
+&lt;li&gt;配置Myeclipse快捷键提示：略&lt;/li&gt;
+&lt;li&gt;配置Myeclipse编码：略&lt;/li&gt;
+&lt;li&gt;设置myeclipse自动生成的author等注释 
+
+&lt;ul&gt;
+&lt;li&gt;window－&amp;gt;preference－&amp;gt;java－&amp;gt;code    styple－&amp;gt;code Template 当你选择到这部的时候就会看见右侧有一个框显示出code这个选项，你点开这个选项，点一下他下面的New Java  files 然后你点edit按钮，把他的内容换成你的就可以了，如
+&lt;code&gt;
+${filecomment}
+${package_declaration}
+/**
+* @author Tree E-mail:Tree@163.com
+* @version 创建时间：${date} ${time}
+* 类说明
+*/
+${typecomment}
+${type_declaration}
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;window－&amp;gt;preference－&amp;gt;java－&amp;gt;code    styple－&amp;gt;code Template -&amp;gt; Comments-&amp;gt;Types&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/**
+* @author ${user}
+* ${date} ${time}
+* ${tags}
+*/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;修改为&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/**
+* @author Tree
+* ${date} ${time}
+* ${tags}
+* /
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;&lt;strong&gt;5. SVN插件安装&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;在eclipse的Help-&amp;gt;Eclipse Marketplace中，搜索框输入SVN,然后选择如下图所示的:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xiif2.com1.z0.glb.clouddn.com/2014-02-11-001.png&quot; alt=&quot;pic&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;点击Install，然后全选安装即可。然后点击OK，自动重启即可使用。&lt;/p&gt;
+
+&lt;p&gt;file-&amp;gt;import-&amp;gt;svn-&amp;gt;从SVN检出项目即可使用&lt;/p&gt;
+
+&lt;h3&gt;&lt;strong&gt;常见问题汇总：&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;安装myeclipse出现failed to find a mian class in c:\windows\temp\的错误，然后中断安装&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+&lt;li&gt;原因：win7的程序运行权限控制十分严格，运行myeclipse 10的安装程序时，首先是将安装包解压到c:\windows\temp的临时文件夹下，再执行该文件夹下的真正安装程序。由于权限不够，系统提示不能找到安装程序主类。&lt;/li&gt;
+&lt;li&gt; 解决办法：右击myeclipse 10的安装程序myeclipse-10.0-offline-installer-windows.exe，在弹出窗口中选择“以管理员身份运行”即可。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;安装myeclipse 选择系统安装盘时无法选择next选项
+
+&lt;ul&gt;
+&lt;li&gt;原因：不详&lt;/li&gt;
+&lt;li&gt;解决办法：更换安装目录即可&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;[...未完待续，实时更新中...]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
+</description>
+      </item>
+    
+  </channel>
+</rss>
