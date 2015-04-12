@@ -2,7 +2,7 @@
 layout: post
 title: ubuntu下MySQL开启远程连接
 category: 配置
-tags: 环境配置,linux
+tags: 环境配置 linux
 keywords: ubuntu MySQL
 description: 
 ---
