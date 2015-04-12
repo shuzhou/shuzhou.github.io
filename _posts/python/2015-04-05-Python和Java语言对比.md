@@ -2,7 +2,7 @@
 layout: post
 title: Python和Java语言对比
 category: python
-tags: python语言
+tags: 开发语言
 keywords: python java
 description: 
 ---

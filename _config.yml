@@ -34,8 +34,8 @@ active: linux
 
 # 首页除了最新文章外显示分类
 cates: 
-  - Machine Learning
-  - linux
+  - 机器学习
+  - 开发语言
 
 # 中文本地化
 locals:
