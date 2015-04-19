@@ -6,6 +6,102 @@
     <description>My personal blog</description>
     
       <item>
+        <title>IBMSyntheticDataGenerator(数据生成器)的使用</title>
+        <link>/2015/04/13/IBMSyntheticDataGenerator(%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%99%A8)%E7%9A%84%E4%BD%BF%E7%94%A8.html</link>
+        <guid isPermaLink="true">/2015/04/13/IBMSyntheticDataGenerator(%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%99%A8)%E7%9A%84%E4%BD%BF%E7%94%A8.html</guid>
+        <pubDate>Mon, 13 Apr 2015 00:00:00 +0800</pubDate>
+        <description>&lt;h4&gt;1. SyntheticDataGenerator简介&lt;/h4&gt;
+
+&lt;p&gt;&amp;#8194;&amp;#8194;&amp;#8194;&amp;#8194;该工具支持三种生成模式：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;参数&lt;em&gt;list&lt;/em&gt;代表生成交易事务数据&lt;/li&gt;
+&lt;li&gt;参数&lt;em&gt;tax&lt;/em&gt;代表生成分类数据&lt;/li&gt;
+&lt;li&gt;参数&lt;em&gt;seq&lt;/em&gt;代表生成序列数据&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;#8194;&amp;#8194;&amp;#8194;&amp;#8194;由于本次自己用到了的是序列数据生成功能，所以就序列数据的生成使用做详细讲解。&lt;/p&gt;
+
+&lt;h4&gt;2. SyntheticDataGenerator下载&lt;/h4&gt;
+
+&lt;p&gt;在&lt;a href=&quot;http://synthdatagen.codeplex.com/releases/view/60659&quot;&gt;http://synthdatagen.codeplex.com/releases/view/60659&lt;/a&gt;下载文件&lt;/p&gt;
+
+&lt;h4&gt;3. SyntheticDataGenerator初步体验使用&lt;/h4&gt;
+
+&lt;p&gt;&amp;#8194;&amp;#8194;&amp;#8194;&amp;#8194;该工具的具体使用详见&lt;a href=&quot;http://synthdatagen.codeplex.com/documentation&quot;&gt;http://synthdatagen.codeplex.com/documentation&lt;/a&gt;，由于在使用过程中发现与官网文档所述稍有不同，故做简单使用记录如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;打开SyntheticDataGenerator下载文件夹，新建一个一.bat结尾的文件，文件名任意，内容为SyntheticDataGenerator seq -fname test&lt;/li&gt;
+&lt;li&gt;保存文件，并双击运行该文件&lt;/li&gt;
+&lt;li&gt;观察文件夹下多出了四个文件，分别为test.config、test.lit.patterns、test.seq.patterns、test.sequences&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;4. SyntheticDataGenerator序列数据生成详解&lt;/h4&gt;
+
+&lt;h5&gt;使用&lt;/h5&gt;
+
+&lt;p&gt;&amp;#8194;&amp;#8194;&amp;#8194;&amp;#8194;命令SyntheticDataGenerator seq options，其中详细可供选择的参数如下：&lt;/p&gt;
+
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;参数&lt;/th&gt;
+        &lt;th&gt;值类型&lt;/th&gt;
+        &lt;th&gt;描述&lt;/th&gt;
+        &lt;th&gt;默认值&lt;/th&gt;
+    &lt;/tr&gt;   
+    &lt;tr&gt;
+        &lt;td&gt;-fname&lt;/td&gt;
+        &lt;td&gt;文件名&lt;/td&gt;
+        &lt;td&gt;输出文件的文件名（不包含后缀）&lt;/td&gt;
+        &lt;td&gt;没有默认值【必选项】&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;-tlen&lt;/td&gt;
+        &lt;td&gt;double&lt;/td&gt;
+        &lt;td&gt;交易事务长度&lt;/td&gt;
+        &lt;td&gt;2.5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;-nitems&lt;/td&gt;
+        &lt;td&gt;iteger&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</description>
+      </item>
+    
+      <item>
         <title>ubuntu中文编码配置</title>
         <link>/2015/04/06/ubuntu%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E9%85%8D%E7%BD%AE.html</link>
         <guid isPermaLink="true">/2015/04/06/ubuntu%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E9%85%8D%E7%BD%AE.html</guid>
@@ -108,7 +204,7 @@ LC_ALL=
         <link>/2015/04/05/Python%E5%92%8CJava%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%AF%94.html</link>
         <guid isPermaLink="true">/2015/04/05/Python%E5%92%8CJava%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%AF%94.html</guid>
         <pubDate>Sun, 05 Apr 2015 00:00:00 +0800</pubDate>
-        <description>&lt;p&gt;现在一直习惯于用SSH做WEB开发，但是最近愈来愈感觉对于小的项目工程，Java的SSH框架过于沉重，所以经过调研发现Python语言比较方便，所以最近把python语法看了一遍，故把Python和Java中异同做下对比。&lt;/p&gt;
+        <description>&lt;p&gt;&amp;#8194;&amp;#8194;&amp;#8194;&amp;#8194;现在一直习惯于用SSH做WEB开发，但是最近愈来愈感觉对于小的项目工程，Java的SSH框架过于沉重，所以经过调研发现Python语言比较方便，所以最近把python语法看了一遍，故把Python和Java中异同做下对比。&lt;/p&gt;
 
 &lt;h3&gt;&lt;strong&gt;1. 缩进&lt;/strong&gt;&lt;/h3&gt;
 
@@ -180,7 +276,7 @@ LC_ALL=
            print &amp;quot;banana grow...&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; Python 中的_&lt;em&gt;init_&lt;/em&gt;（）方法类似与Java中的构造函数，Java构造函数中的self默认存在，不需要在构造函数声明的时候进行显示指明，但是Python需要在_&lt;em&gt;init&lt;/em&gt;_()函数中显示指明（但是ID调用时不用显示进行self传递）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; Python 中的__init__（）方法类似与Java中的构造函数，Java构造函数中的self默认存在，不需要在构造函数声明的时候进行显示指明，但是Python需要在__init__()函数中显示指明（但是ID调用时不用显示进行self传递）&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;ul&gt;

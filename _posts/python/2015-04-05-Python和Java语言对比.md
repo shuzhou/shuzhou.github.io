@@ -7,7 +7,7 @@ keywords: python java
 description: 
 ---
 
-现在一直习惯于用SSH做WEB开发，但是最近愈来愈感觉对于小的项目工程，Java的SSH框架过于沉重，所以经过调研发现Python语言比较方便，所以最近把python语法看了一遍，故把Python和Java中异同做下对比。
+&#8194;&#8194;&#8194;&#8194;现在一直习惯于用SSH做WEB开发，但是最近愈来愈感觉对于小的项目工程，Java的SSH框架过于沉重，所以经过调研发现Python语言比较方便，所以最近把python语法看了一遍，故把Python和Java中异同做下对比。
 
 ###**1. 缩进**
 
@@ -73,7 +73,7 @@ class Banana(Fruit):                              #继承了父类
       def grow(self):                             #覆盖了父类的grow方法
            print "banana grow..."
 ```
->**注意：** Python 中的\__init\__（）方法类似与Java中的构造函数，Java构造函数中的self默认存在，不需要在构造函数声明的时候进行显示指明，但是Python需要在\__init__()函数中显示指明（但是ID调用时不用显示进行self传递）
+>**注意：** Python 中的\_\_init\_\_（）方法类似与Java中的构造函数，Java构造函数中的self默认存在，不需要在构造函数声明的时候进行显示指明，但是Python需要在\_\_init_\_()函数中显示指明（但是ID调用时不用显示进行self传递）
 
 - Python中的接口
 Java中的接口接口是为了解决不能多继承的问题，由于Python中支持多继承，所以Python中没有接口的概念。
@@ -94,6 +94,3 @@ Java中的接口接口是为了解决不能多继承的问题，由于Python中�
 - Java中通过toString()方法来实现对象的序列化
 
 ###**7. 参数传递中的\*和\****
-
-
-

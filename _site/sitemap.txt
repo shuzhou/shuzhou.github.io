@@ -11,6 +11,8 @@
 
 
 
+  /2015/04/13/IBMSyntheticDataGenerator(%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%99%A8)%E7%9A%84%E4%BD%BF%E7%94%A8.html
+
   /2015/04/06/ubuntu%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E9%85%8D%E7%BD%AE.html
 
   /2015/04/05/Python%E5%92%8CJava%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%AF%94.html

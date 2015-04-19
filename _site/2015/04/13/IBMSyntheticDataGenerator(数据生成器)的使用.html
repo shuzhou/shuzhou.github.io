@@ -2,8 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>首页 | 张书洲的博客</title>
+<title>IBMSyntheticDataGenerator(数据生成器)的使用 | 张书洲的博客</title>
 <meta name="author" content="Shuzhou Zhang">
+
+  <meta name="keywords" content="数据挖掘 序列生成器">
 
 
 <link rel="shortcut icon" href="/public/img/deer3.png" />
@@ -196,100 +198,100 @@
             <div class="row">
   <div class="col-md-13 aside3-title">
     <br>
-    <h2 id="#identifier">默认首页</h2>
+    <h2 id="#identifier">IBMSyntheticDataGenerator(数据生成器)的使用</h2>
+    2015年04月13日
   </div>
   <div class="col-md-13 aside3-content">
-    <div id="page-content">
-      <!--<br>--> 
-<center><h3><font color="#000080">明</font><font color="#FFA500">天</font></font><font color="#BA55D3">, </font><font color="#601986">你</font><font color="#556fb5">好</font></h3></center>
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-primary">
-      <div class="panel-heading">最新文章</div>
-      
-        <a  href='/2015/04/13/IBMSyntheticDataGenerator(%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%99%A8)%E7%9A%84%E4%BD%BF%E7%94%A8.html' class="list-group-item pjaxlink clearfix">
-          IBMSyntheticDataGenerator(数据生成器)的使用
-          <span class="badge">2015年04月13日</span>
-        </a>
-      
-        <a  href='/2015/04/06/ubuntu%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E9%85%8D%E7%BD%AE.html' class="list-group-item pjaxlink clearfix">
-          ubuntu中文编码配置
-          <span class="badge">2015年04月06日</span>
-        </a>
-      
-        <a  href='/2015/04/05/Python%E5%92%8CJava%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%AF%94.html' class="list-group-item pjaxlink clearfix">
-          Python和Java语言对比
-          <span class="badge">2015年04月05日</span>
-        </a>
-      
-        <a  href='/2014/12/12/ubuntu%E4%B8%8BMySQL%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.html' class="list-group-item pjaxlink clearfix">
-          ubuntu下MySQL开启远程连接
-          <span class="badge">2014年12月12日</span>
-        </a>
-      
-        <a  href='/2014/02/11/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html' class="list-group-item pjaxlink clearfix">
-          Java开发环境配置及常见问题
-          <span class="badge">2014年02月11日</span>
-        </a>
-      
-    </div>
-  </div>
-  
-    <div class="col-md-12">
-      <div class="panel panel-primary">
-        <div class="panel-heading">机器学习</div>
-         
-          
-         
-          
-         
-          
-         
-          
-            
-              <a  href='/2015/04/13/IBMSyntheticDataGenerator(%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%99%A8)%E7%9A%84%E4%BD%BF%E7%94%A8.html' class="list-group-item pjaxlink clearfix">
-                IBMSyntheticDataGenerator(数据生成器)的使用
-                <span class="badge">2015年04月13日</span>
-              </a>
-            
-          
-         
-          
-        
-      </div>
-    </div>
-  
-    <div class="col-md-12">
-      <div class="panel panel-primary">
-        <div class="panel-heading">开发语言</div>
-         
-          
-         
-          
-            
-              <a  href='/2015/04/05/Python%E5%92%8CJava%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%AF%94.html' class="list-group-item pjaxlink clearfix">
-                Python和Java语言对比
-                <span class="badge">2015年04月05日</span>
-              </a>
-            
-              <a  href='/2014/02/11/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html' class="list-group-item pjaxlink clearfix">
-                Java开发环境配置及常见问题
-                <span class="badge">2014年02月11日</span>
-              </a>
-            
-          
-         
-          
-         
-          
-         
-          
-        
-      </div>
-    </div>
-  
-</div>
- 
+    <hr>
+    <div id="content">
+      <h4>1. SyntheticDataGenerator简介</h4>
+
+<p>&#8194;&#8194;&#8194;&#8194;该工具支持三种生成模式：</p>
+
+<ul>
+<li>参数<em>list</em>代表生成交易事务数据</li>
+<li>参数<em>tax</em>代表生成分类数据</li>
+<li>参数<em>seq</em>代表生成序列数据</li>
+</ul>
+
+<p>&#8194;&#8194;&#8194;&#8194;由于本次自己用到了的是序列数据生成功能，所以就序列数据的生成使用做详细讲解。</p>
+
+<h4>2. SyntheticDataGenerator下载</h4>
+
+<p>在<a href="http://synthdatagen.codeplex.com/releases/view/60659">http://synthdatagen.codeplex.com/releases/view/60659</a>下载文件</p>
+
+<h4>3. SyntheticDataGenerator初步体验使用</h4>
+
+<p>&#8194;&#8194;&#8194;&#8194;该工具的具体使用详见<a href="http://synthdatagen.codeplex.com/documentation">http://synthdatagen.codeplex.com/documentation</a>，由于在使用过程中发现与官网文档所述稍有不同，故做简单使用记录如下：</p>
+
+<ul>
+<li>打开SyntheticDataGenerator下载文件夹，新建一个一.bat结尾的文件，文件名任意，内容为SyntheticDataGenerator seq -fname test</li>
+<li>保存文件，并双击运行该文件</li>
+<li>观察文件夹下多出了四个文件，分别为test.config、test.lit.patterns、test.seq.patterns、test.sequences</li>
+</ul>
+
+<h4>4. SyntheticDataGenerator序列数据生成详解</h4>
+
+<h5>使用</h5>
+
+<p>&#8194;&#8194;&#8194;&#8194;命令SyntheticDataGenerator seq options，其中详细可供选择的参数如下：</p>
+
+<table>
+    <tr>
+        <th>参数</th>
+        <th>值类型</th>
+        <th>描述</th>
+        <th>默认值</th>
+    </tr>   
+    <tr>
+        <td>-fname</td>
+        <td>文件名</td>
+        <td>输出文件的文件名（不包含后缀）</td>
+        <td>没有默认值【必选项】</td>
+    </tr>
+    <tr>
+        <td>-tlen</td>
+        <td>double</td>
+        <td>交易事务长度</td>
+        <td>2.5</td>
+    </tr>
+    <tr>
+        <td>-nitems</td>
+        <td>iteger</td>
+        <td></td>
+        <td></td>
+    </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
 
     </div>
     <hr>
@@ -298,7 +300,14 @@
 <!-- UY END -->
 
   </div>
+  <!-- 目录 -->
+  <div id="content_table" style="position:fixed;right:20px;top:120px;display:none;">
+    <div class="panel panel-success">
+      <div class="panel-body" id="nav"></div>
+    </div>
+  </div>
 </div>
+
 
           </div>
         </div>
