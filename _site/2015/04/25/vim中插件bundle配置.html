@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>ubuntu下MySQL开启远程连接 | 张书洲的博客</title>
+<title>vim中插件vundle配置 | 张书洲的博客</title>
 <meta name="author" content="Shuzhou Zhang">
 
-  <meta name="keywords" content="ubuntu MySQL">
+  <meta name="keywords" content="linux，vim，环境配置">
 
 
 <link rel="shortcut icon" href="/public/img/deer3.png" />
@@ -241,53 +241,47 @@
             <div class="row">
   <div class="col-md-13 aside3-title">
     <br>
-    <h2 id="#identifier">ubuntu下MySQL开启远程连接</h2>
-    2014年12月12日
+    <h2 id="#identifier">vim中插件vundle配置</h2>
+    2015年04月25日
   </div>
   <div class="col-md-13 aside3-content">
     <hr>
     <div id="content">
-      <h3>1. mysql安装后密码无法登陆问题</h3>
+      <p>有过vim配置的同学知道，vim配置后可以和IDE媲美，简直是当之无愧的神奇。</p>
+
+<p>现在我就为大家来介绍一款vim的管理插件 --vundle</p>
+
+<h3>1. vundle简介</h3>
+
+<p>&#160; &#160; &#160; &#160;Vundle项目托管在github上 <a href="https://github.com/gmarik/vundle">https://github.com/gmarik/vundle</a>，其特色在于使用git来管理插件,更新方便，支持搜索，一键更新，从此只需要一个vimrc走天下.</p>
+
+<h3>2. vundle配置</h3>
 
 <ul>
-<li>这时你需要进入/etc/mysql目录下，然后查看里面的用户名和密码，然后输入<code>sudo vim debian.cnf</code></li>
-<li>使用这个文件中的用户名和密码进入mysql,假如debian.cnf中的用户名为debian-sys-maint,则：<code>mysql -u debian-sys-maint -p</code></li>
-<li>按回车，这时需要你输入密码，复制debian.cnf中的密码（不要手动输入，因为容易产生错误）。</li>
-<li>然后修改root用户的密码，如下操作</li>
+<li>下载vundle</li>
 </ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">use mysql
-show tables;//查看mysql数据库中的表，会看到一个user表。
-select * from user;//查看一下这个表中是否有root用户，如果有：
-update user set password=password(&quot;root&quot;) where user=&quot;root&quot;;//更改root用户进入mysql的密码。
-flush privileges;
-</code></pre></div>
+
+<p>&#160; &#160; &#160; &#160;vundle的源码放在github上，所以先将vundle下载到本地</p>
+
+<p>&#160; &#160; &#160; &#160;<code>git clone https://github.com/gmarik/vundle.git  ~/.vim/bundle/vundle</code></p>
+
 <ul>
-<li>quit退出mysql,然后用root登录 <code>mysql -u root -proot</code></li>
+<li>配置vim</li>
+</ul>
+
+<p>&#160; &#160; &#160; &#160;使用命令<code>cd ~</code>转换到当前用户的根目录下，然后修改.vimrc如所示<a href="https://github.com/shuzhou/config_file/blob/master/vimrc">https://github.com/shuzhou/config_file/blob/master/vimrc</a></p>
+
+<ul>
+<li>当前用户下根目录输入<code>vim</code>,然后输入<code>:BundleInstall</code>,等待插件安装，安装完毕后就可以使用了</li>
 </ul>
 
 <blockquote>
-<p>如果user表中没有root用户：用grant命令<code>grant all privileges on *.* to root@localhost identified by&#39;123&#39;</code>
-其中<em>.</em>代表所有数据库中的所有表，即database name.your table&#39;123&#39;表示为root用户的密码。</p>
+<p><strong>注：</strong></p>
 
-<p>然后输入<code>flush privileges;</code></p>
+<p>机器上没有安装git命令的童鞋请主动安装git命令</p>
 
-<p>然后输入<code>select * from user;</code>查看一下user这个表中是否有root用户。如果有表示添加成功。</p>
+<p><code>sudo apt-get install git</code></p>
 </blockquote>
-
-<h3>2. 配置远程连接</h3>
-
-<ul>
-<li><code>vim /etc/mysql/my.cnf</code> 找到bind-address = 127.0.0.1</li>
-<li>注释掉这行，如：#bind-address = 127.0.0.1 或者改为： bind-address = 0.0.0.0，此表示允许任意IP访问；或者自己指定一个IP地址。</li>
-<li>重启 MySQL：<code>sudo /etc/init.d/mysql restart</code></li>
-<li>登录mysql授权用户能进行远程连接 
-
-<ul>
-<li><code>grant all privileges on *.* to root@&quot;%&quot; identified by &quot;password&quot; with grant option;</code></li>
-<li><code>flush privileges;</code>
-&gt; 第一行命令解释如下，<em>.</em>：第一个<em>代表数据库名；第二个</em>代表表名。这里的意思是所有数据库里的所有表都授权给用户。root：授予root账号。“%”：表示授权的用户IP可以指定，这里代表任意的IP地址都能访问MySQL数据库。“password”：分配账号对应的密码，这里密码自己替换成你的mysql root帐号密码。</li>
-</ul></li>
-</ul>
 
     </div>
     <hr>

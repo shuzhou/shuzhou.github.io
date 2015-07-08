@@ -6,98 +6,274 @@
     <description>My personal blog</description>
     
       <item>
-        <title>IBMSyntheticDataGenerator(数据生成器)的使用</title>
-        <link>/2015/04/13/IBMSyntheticDataGenerator(%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%99%A8)%E7%9A%84%E4%BD%BF%E7%94%A8.html</link>
-        <guid isPermaLink="true">/2015/04/13/IBMSyntheticDataGenerator(%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%99%A8)%E7%9A%84%E4%BD%BF%E7%94%A8.html</guid>
-        <pubDate>Mon, 13 Apr 2015 00:00:00 +0800</pubDate>
-        <description>&lt;h4&gt;1. SyntheticDataGenerator简介&lt;/h4&gt;
-
-&lt;p&gt;&amp;#8194;&amp;#8194;&amp;#8194;&amp;#8194;该工具支持三种生成模式：&lt;/p&gt;
+        <title>windows下搭建jekyll调试博客</title>
+        <link>/2015/07/08/windows%20install%20jekyll%20environment%20.html</link>
+        <guid isPermaLink="true">/2015/07/08/windows%20install%20jekyll%20environment%20.html</guid>
+        <pubDate>Wed, 08 Jul 2015 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;首先对安装的整理流程做个简单叙述：&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;参数&lt;em&gt;list&lt;/em&gt;代表生成交易事务数据&lt;/li&gt;
-&lt;li&gt;参数&lt;em&gt;tax&lt;/em&gt;代表生成分类数据&lt;/li&gt;
-&lt;li&gt;参数&lt;em&gt;seq&lt;/em&gt;代表生成序列数据&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&amp;#8194;&amp;#8194;&amp;#8194;&amp;#8194;由于本次自己用到了的是序列数据生成功能，所以就序列数据的生成使用做详细讲解。&lt;/p&gt;
-
-&lt;h4&gt;2. SyntheticDataGenerator下载&lt;/h4&gt;
-
-&lt;p&gt;在&lt;a href=&quot;http://synthdatagen.codeplex.com/releases/view/60659&quot;&gt;http://synthdatagen.codeplex.com/releases/view/60659&lt;/a&gt;下载文件&lt;/p&gt;
-
-&lt;h4&gt;3. SyntheticDataGenerator初步体验使用&lt;/h4&gt;
-
-&lt;p&gt;&amp;#8194;&amp;#8194;&amp;#8194;&amp;#8194;该工具的具体使用详见&lt;a href=&quot;http://synthdatagen.codeplex.com/documentation&quot;&gt;http://synthdatagen.codeplex.com/documentation&lt;/a&gt;，由于在使用过程中发现与官网文档所述稍有不同，故做简单使用记录如下：&lt;/p&gt;
+&lt;li&gt;安装Ruby及Devkit&lt;/li&gt;
+&lt;li&gt;使用gem安装Jekyll&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装 Pygments&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;打开SyntheticDataGenerator下载文件夹，新建一个一.bat结尾的文件，文件名任意，内容为SyntheticDataGenerator seq -fname test&lt;/li&gt;
-&lt;li&gt;保存文件，并双击运行该文件&lt;/li&gt;
-&lt;li&gt;观察文件夹下多出了四个文件，分别为test.config、test.lit.patterns、test.seq.patterns、test.sequences&lt;/li&gt;
+&lt;li&gt;安装 Python&lt;/li&gt;
+&lt;li&gt;安装 ‘Easy Install’&lt;/li&gt;
+&lt;li&gt;用 “easy_install” 来安装 Pygments&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;启动Jekyll&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;故障诊断&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4&gt;4. SyntheticDataGenerator序列数据生成详解&lt;/h4&gt;
+&lt;h3&gt;&lt;strong&gt;1. 安装Ruby及Devkit&lt;/strong&gt;&lt;/h3&gt;
 
-&lt;h5&gt;使用&lt;/h5&gt;
+&lt;h4&gt;&lt;strong&gt;1). 安装Ruby&lt;/strong&gt;&lt;/h4&gt;
 
-&lt;p&gt;&amp;#8194;&amp;#8194;&amp;#8194;&amp;#8194;命令SyntheticDataGenerator seq options，其中详细可供选择的参数如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;前往 &lt;a href=&quot;http://rubyinstaller.org/downloads/&quot;&gt;http://rubyinstaller.org/downloads/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在 “RubyInstallers” 部分，选择某个版本点击下载。（笔者安装版本&lt;a href=&quot;http://pan.baidu.com/s/1hqpNBi0&quot;&gt;下载&lt;/a&gt;）
+例如， Ruby 2.0.0-p451 (x64) 是适于64位 Windows 机器上的 Ruby 2.0.0 x64 安装包。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;通过安装包安装&lt;/p&gt;
 
-&lt;table&gt;
-    &lt;tr&gt;
-        &lt;th&gt;参数&lt;/th&gt;
-        &lt;th&gt;值类型&lt;/th&gt;
-        &lt;th&gt;描述&lt;/th&gt;
-        &lt;th&gt;默认值&lt;/th&gt;
-    &lt;/tr&gt;   
-    &lt;tr&gt;
-        &lt;td&gt;-fname&lt;/td&gt;
-        &lt;td&gt;文件名&lt;/td&gt;
-        &lt;td&gt;输出文件的文件名（不包含后缀）&lt;/td&gt;
-        &lt;td&gt;没有默认值【必选项】&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;-tlen&lt;/td&gt;
-        &lt;td&gt;double&lt;/td&gt;
-        &lt;td&gt;交易事务长度&lt;/td&gt;
-        &lt;td&gt;2.5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;-nitems&lt;/td&gt;
-        &lt;td&gt;iteger&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-        &lt;tr&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-        &lt;tr&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-        &lt;tr&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-        &lt;tr&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;最好保持默认的路径 C:\Ruby200-x64， 因为安装包明确提出 “请不要使用带有空格的文件夹 (如： Program Files)”。&lt;/li&gt;
+&lt;li&gt;勾选 “Add Ruby executables to your PATH”，这样执行程序会被自动添加至 PATH 而避免不必要的头疼（建议将所有可勾选的项全部进行勾选）。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;验证ruby是否安装成功：打开控制台输入&lt;code&gt;ruby -v&lt;/code&gt;，例如输出&lt;code&gt;ruby 2.1.5p273 (2014-11-13 revision 48405) [x64-mingw32]&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;&lt;strong&gt;2). 安装Devkit&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;DevKit是windows平台下编译和使用本地C/C++扩展包的工具。它就是用来模拟Linux平台下的make,gcc,sh来进行编译。但是这个方法目前仅支持通过RubyInstaller安装的Ruby。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;再次前往 &lt;a href=&quot;http://rubyinstaller.org/downloads/&quot;&gt;http://rubyinstaller.org/downloads/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载同系统及 Ruby 版本相对应的 DevKit 安装包。 例如，DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe 适用于64位 Windows 系统上的 Ruby 2.0.0 x64。(笔者安装的ruby对应的Devkit版本&lt;a href=&quot;http://pan.baidu.com/s/1dDcw84T&quot;&gt;下载&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;运行安装包并解压缩至某文件夹，如 C:\DevKit&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;打开控制台，进入解压文件夹目录，输入如下命令&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ruby dk.rb init
+ruby dk.rb install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;安装Devkit出现问题汇总：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_7444213001018fa7.html&quot;&gt;http://blog.sina.com.cn/s/blog_7444213001018fa7.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&lt;strong&gt;2.使用gem安装Jekyll&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;一般情况下经过第1步骤的安装gem已经安装，我们可以通过输入&lt;code&gt;gem -v&lt;/code&gt;进行检查gem是否安装（Gem是一个管理Ruby库和程序的标准包）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;gem是可以选择源的，默认的源有点慢，可以使用ruby.taobao.org的源&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;查看当源&lt;/p&gt;
+
+&lt;p&gt;输入：   &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;gem sources list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;显示：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;***CURRENT SOURCES ***
+https://rubygems.org/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;添加新源&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;gem sources -a http://ruby.taobao.org/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;删除默认源&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;gem sources --remove https://rubygems.org/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;再次查看新源,确保只有&lt;code&gt;http://ruby.taobao.org/&lt;/code&gt;就行了&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;直接如下命令即可安装jekyll，该命令会安装jekyll及所有需要的依赖（但不包括插件）&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;gem install jekyll
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;网上有人说jekyll的版本1.4.3有个bug,但是我直接安装了最新版本，为2.5.3，没有碰到所谓的bug，估计是新版本已经修复，所以自动略过&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;&lt;strong&gt;3.安装 Pygments&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;Jekyll 里默认的语法高亮插件是 Pygments。 它需要安装 Python。&lt;/p&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;不久之前，Jekyll 还添加另一个高亮引擎名为 Rouge， 尽管暂时不如 Pygments 支持那么多的语言，但它是原生 Ruby 程序，而不需要使用 Python。&lt;/p&gt;
+
+&lt;h4&gt;&lt;strong&gt;1). 安装 Python&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;建议安装python 2(具体安装略去)&lt;/li&gt;
+&lt;li&gt;配置python环境变量&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;python –V&lt;/code&gt;检查python是否安装成功&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;&lt;strong&gt;2). 安装 ‘Easy Install’&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;浏览 &lt;a href=&quot;https://pypi.python.org/pypi/setuptools#installation-instructions&quot;&gt;https://pypi.python.org/pypi/setuptools#installation-instructions&lt;/a&gt; 来查看详细的安装指南。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对于 Windows 7 的机器，下载 &lt;a href=&quot;http://pan.baidu.com/s/1qWl38Gc&quot;&gt;ez_setup.py&lt;/a&gt; 并保存，例如，至C:\。 然后从命令行使用 Python 运行此文件：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;python “C:\ez_setup.py”
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;添加 ‘Python Scripts’ 路径 (如： C:\Python27\Scripts) 至 PATH&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;&lt;strong&gt;3). 用 “easy_install” 来安装 Pygments&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;确保 easy_install 已经正确安装，输入&lt;code&gt;easy_install --version&lt;/code&gt;检查&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用 “easy_install” 来安装 Pygments&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;easy_install Pygments
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&lt;strong&gt;4.启动Jekyll&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;进入待启动的网站目录，然后输入&lt;code&gt;jekyll serve&lt;/code&gt;，然后既可以通过127.0.0.1:4000进行访问&lt;/p&gt;
+
+&lt;h3&gt;参考博客&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/kong5090041/article/details/38408211&quot;&gt;Windows 上安装 Jekyll &lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://segmentfault.com/a/1190000000406011&quot;&gt;使用Jekyll在Github上搭建个人博客&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      </item>
+    
+      <item>
+        <title>git使用笔记</title>
+        <link>/2015/07/07/git%20use%20note.html</link>
+        <guid isPermaLink="true">/2015/07/07/git%20use%20note.html</guid>
+        <pubDate>Tue, 07 Jul 2015 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;git作为一个分布式的版本控制工具，其具有集中式版本管理工具所不具有的优点。关于其具体优点不做过多的赘述，下面就git的简单使用进行简单记录&lt;/p&gt;
+
+&lt;h3&gt;&lt;strong&gt;预备工作&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;1.注册github账号&lt;/p&gt;
+
+&lt;p&gt;2.window上安装git&lt;/p&gt;
+
+&lt;p&gt;3.配置机器账号&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ git config --global user.name &amp;quot;Your Name&amp;quot;
+$ git config --global user.email &amp;quot;email@example.com&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;4.创建SSH Key&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt; ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;为什么GitHub需要SSH Key呢？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;因为GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的，而Git支持SSH协议，所以，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送。&lt;/p&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;当然，GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;&lt;strong&gt;1. 从远程仓库克隆&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;假设你需要将某个远程仓库的代码clone下来，那么你就需要用该模块的知识。
+例如输入如下命令：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git clone git@github.com:shuzhou/shuzhou.github.io.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      </item>
+    
+      <item>
+        <title>文件上传的路径获取及回环问题</title>
+        <link>/2015/04/30/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%9A%84%E8%B7%AF%E5%BE%84%E8%8E%B7%E5%8F%96%E5%8F%8A%E5%9B%9E%E7%8E%AF%E9%97%AE%E9%A2%98.html</link>
+        <guid isPermaLink="true">/2015/04/30/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%9A%84%E8%B7%AF%E5%BE%84%E8%8E%B7%E5%8F%96%E5%8F%8A%E5%9B%9E%E7%8E%AF%E9%97%AE%E9%A2%98.html</guid>
+        <pubDate>Thu, 30 Apr 2015 00:00:00 +0800</pubDate>
+        <description>&lt;h3&gt;1. ServletContext的getRealPath方法&lt;/h3&gt;
+
+&lt;p&gt;request.getRealPath()这个方法以及被淘汰，所以建议不要使用。&lt;/p&gt;
+
+&lt;p&gt;而获取ServletContext可以用&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;request.getServletContext()（这种支持在servlet3.0以后的）&lt;/li&gt;
+&lt;li&gt;request.getSession().getServletContext()&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;代码如下：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;String uploadPath = request.getSession().getServletContext().getRealPath(&amp;quot;/&amp;quot;);  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：该种方法中的&amp;quot;/&amp;quot;不能用File.separator代替，因为该种方法获取路径值为空&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;2. 采用getResource(&amp;quot;&amp;quot;)获取&lt;/h3&gt;
+
+&lt;p&gt;在web附件上传的时候使用该方法需要配合&lt;code&gt;substring()&lt;/code&gt;函数使用，因为在web中使用该方法的获取的路径值形如&lt;code&gt;file:/C:/Java/apache-tomcat-8.0.12/webapps/bjl-gyw/WEB-INF/lib/commons-fileupload-1.3.jar!/org/apache/commons/fileupload/&lt;/code&gt;，直接使用该路径会产生错误。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;String path = RequestContext.class.getResource(&amp;quot;&amp;quot;).getPath(); 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;主要针对非servlet中，在一般的Java类中使用&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;3. 文件上传回环问题&lt;/h3&gt;
+
+&lt;p&gt;在上传文件中，为了防止文件名冲突，一般选择对上传的文件进行重命名，自己重命名的规则一直习惯于ip+time+固定位随机数+原文件名，当我们服务器和客户端在同一台机器时，获取ip地址就产生了回环问题。&lt;/p&gt;
+
+&lt;p&gt;当我们用到&lt;code&gt;httpServletRequest.getRemoteAddr()&lt;/code&gt;的时候，我们在控制台上可以看到遇到了&lt;code&gt;request.getRemoteAddr()&lt;/code&gt;获取的值为0:0:0:0:0:0:0:1，而不是127.0.0.1，这是什么原因呢？
+因为0:0:0:0:0:0:0:1是ipv6的格式，其等同于ipv4格式的127.0.0.1。&lt;/p&gt;
+
+&lt;p&gt;解决办法如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;最简单的是你本机访问的时候不用localhost而是用127.0.0.1，这样我们可以看到正常的输出结果&lt;/li&gt;
+&lt;li&gt;修改本机的配置文件C:\Windows\System32\drivers\etc下面有一个localhost的文件，你打开后可以看到# ::1 localhost的配置，你可以删除。其中你也可以修改本机的ip，例如你修改一下127.0.0.1为127.0.0.2，当你以后访问的时间127.0.0.2就是你的本机的ip了.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr/&gt;
+
+&lt;p&gt;参考链接：&lt;/p&gt;
+
+&lt;p&gt;[1] &lt;a href=&quot;http://blog.csdn.net/liunian02050328/article/details/8088761&quot;&gt; request.getRemoteAddr()获取的值的问题？&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[2] &lt;a href=&quot;http://blog.csdn.net/fengshizty/article/details/28257927?utm_source=tuicool&quot;&gt;JavaEE 保存文件获取绝对路径getResource(&amp;quot;&amp;quot;)和servletContext.getRealPath(&amp;quot;/&amp;quot;) &lt;/a&gt;&lt;/p&gt;
+</description>
+      </item>
+    
+      <item>
+        <title>vim中插件vundle配置</title>
+        <link>/2015/04/25/vim%E4%B8%AD%E6%8F%92%E4%BB%B6bundle%E9%85%8D%E7%BD%AE.html</link>
+        <guid isPermaLink="true">/2015/04/25/vim%E4%B8%AD%E6%8F%92%E4%BB%B6bundle%E9%85%8D%E7%BD%AE.html</guid>
+        <pubDate>Sat, 25 Apr 2015 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;有过vim配置的同学知道，vim配置后可以和IDE媲美，简直是当之无愧的神奇。&lt;/p&gt;
+
+&lt;p&gt;现在我就为大家来介绍一款vim的管理插件 --vundle&lt;/p&gt;
+
+&lt;h3&gt;1. vundle简介&lt;/h3&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;Vundle项目托管在github上 &lt;a href=&quot;https://github.com/gmarik/vundle&quot;&gt;https://github.com/gmarik/vundle&lt;/a&gt;，其特色在于使用git来管理插件,更新方便，支持搜索，一键更新，从此只需要一个vimrc走天下.&lt;/p&gt;
+
+&lt;h3&gt;2. vundle配置&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;下载vundle&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;vundle的源码放在github上，所以先将vundle下载到本地&lt;/p&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;&lt;code&gt;git clone https://github.com/gmarik/vundle.git  ~/.vim/bundle/vundle&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;配置vim&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;使用命令&lt;code&gt;cd ~&lt;/code&gt;转换到当前用户的根目录下，然后修改.vimrc如所示&lt;a href=&quot;https://github.com/shuzhou/config_file/blob/master/vimrc&quot;&gt;https://github.com/shuzhou/config_file/blob/master/vimrc&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当前用户下根目录输入&lt;code&gt;vim&lt;/code&gt;,然后输入&lt;code&gt;:BundleInstall&lt;/code&gt;,等待插件安装，安装完毕后就可以使用了&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;机器上没有安装git命令的童鞋请主动安装git命令&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo apt-get install git&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
       </item>
     
@@ -318,7 +494,7 @@ Java中的接口接口是为了解决不能多继承的问题，由于Python中�
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;use mysql
 show tables;//查看mysql数据库中的表，会看到一个user表。
 select * from user;//查看一下这个表中是否有root用户，如果有：
-update user set password=password(&amp;quot;root&amp;quot;) whereuser=&amp;quot;root&amp;quot;;//更改root用户进入mysql的密码。
+update user set password=password(&amp;quot;root&amp;quot;) where user=&amp;quot;root&amp;quot;;//更改root用户进入mysql的密码。
 flush privileges;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
@@ -340,7 +516,7 @@ flush privileges;
 &lt;li&gt;&lt;code&gt;vim /etc/mysql/my.cnf&lt;/code&gt; 找到bind-address = 127.0.0.1&lt;/li&gt;
 &lt;li&gt;注释掉这行，如：#bind-address = 127.0.0.1 或者改为： bind-address = 0.0.0.0，此表示允许任意IP访问；或者自己指定一个IP地址。&lt;/li&gt;
 &lt;li&gt;重启 MySQL：&lt;code&gt;sudo /etc/init.d/mysql restart&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;授权用户能进行远程连接 
+&lt;li&gt;登录mysql授权用户能进行远程连接 
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;grant all privileges on *.* to root@&amp;quot;%&amp;quot; identified by &amp;quot;password&amp;quot; with grant option;&lt;/code&gt;&lt;/li&gt;
@@ -367,16 +543,19 @@ flush privileges;
 &lt;ol&gt;
 &lt;li&gt;我的电脑-&amp;gt;属性-&amp;gt;高级系统设置-&amp;gt;环境变量&lt;/li&gt;
 &lt;li&gt;在“系统变量”中，设置3项属性，JAVA_HOME,PATH,CLASSPATH(大小写无所谓),若已存在则点击“编辑”，不存在则点击“新建”；&lt;/li&gt;
-&lt;li&gt;JAVA&lt;em&gt;HOME指明JDK安装路径，就是刚才安装时所选择的路径D:/java/jdk1.5.0&lt;/em&gt;08，此路径下包括lib，bin，jre等文件夹（此变量最好设置，因为以后运行tomcat，eclipse等都需要依*此变量）
+&lt;li&gt;JAVA_HOME指明JDK安装路径，就是刚才安装时所选择的路径D:/java/jdk1.5.0_08，此路径下包括lib，bin，jre等文件夹（此变量最好设置，因为以后运行tomcat，eclipse等都需要依*此变量）
 
 &lt;ul&gt;
-&lt;li&gt;Path使得系统可以在任何路径下识别java命令，设为：%JAVA&lt;em&gt;HOME%/bin;%JAVA&lt;/em&gt;HOME%/jre/bin
-&amp;gt; %JAVA&lt;em&gt;HOME%就是引用前面指定的JAVA&lt;/em&gt;HOME；&lt;/li&gt;
-&lt;li&gt;CLASSPATH为java加载类(class or lib)路径，只有类在classpath中，java命令才能识别，设为：.;%JAVA&lt;em&gt;HOME%/lib/dt.jar;%JAVA&lt;/em&gt;HOME%/lib/tools.jar (要加.表示当前路径)&lt;/li&gt;
+&lt;li&gt;Path使得系统可以在任何路径下识别java命令，设为：%JAVA_HOME%/bin;%JAVA_HOME%/jre/bin&lt;/li&gt;
+&lt;li&gt;CLASSPATH为java加载类(class or lib)路径，只有类在classpath中，java命令才能识别，设为：.;%JAVA_HOME%/lib/dt.jar;%JAVA_HOME%/lib/tools.jar (要加.表示当前路径)&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;“开始”－&amp;gt;;“运行”，键入“cmd”；&lt;/li&gt;
 &lt;li&gt;键入命令“java -version”，“java”，“javac”几个命令，出现画面，说明环境变量配置成功；&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;第三步中%JAVA_HOME%就是引用前面指定的JAVA_HOME；&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3&gt;&lt;strong&gt;3. Tomcat安装&lt;/strong&gt;&lt;/h3&gt;
 
@@ -432,6 +611,19 @@ ${type_declaration}
 &lt;p&gt;点击Install，然后全选安装即可。然后点击OK，自动重启即可使用。&lt;/p&gt;
 
 &lt;p&gt;file-&amp;gt;import-&amp;gt;svn-&amp;gt;从SVN检出项目即可使用&lt;/p&gt;
+
+&lt;h3&gt;&lt;strong&gt;6. maven插件安装&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;详见地址如下【亲测可行】：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://dead-knight.iteye.com/blog/1841658&quot;&gt;http://dead-knight.iteye.com/blog/1841658&lt;/a&gt;
+&lt;a href=&quot;http://blog.csdn.net/guanning0109/article/details/26069277&quot;&gt;http://blog.csdn.net/guanning0109/article/details/26069277&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;附:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://maven.apache.org/download.cgi&quot;&gt;Maven下载地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://pan.baidu.com/s/1c06My4o&quot;&gt;Maven插件下载链接&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3&gt;&lt;strong&gt;常见问题汇总：&lt;/strong&gt;&lt;/h3&gt;
 

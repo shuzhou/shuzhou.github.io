@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>ubuntu下MySQL开启远程连接 | 张书洲的博客</title>
+<title>git使用笔记 | 张书洲的博客</title>
 <meta name="author" content="Shuzhou Zhang">
 
-  <meta name="keywords" content="ubuntu MySQL">
+  <meta name="keywords" content="git">
 
 
 <link rel="shortcut icon" href="/public/img/deer3.png" />
@@ -241,54 +241,41 @@
             <div class="row">
   <div class="col-md-13 aside3-title">
     <br>
-    <h2 id="#identifier">ubuntu下MySQL开启远程连接</h2>
-    2014年12月12日
+    <h2 id="#identifier">git使用笔记</h2>
+    2015年07月07日
   </div>
   <div class="col-md-13 aside3-content">
     <hr>
     <div id="content">
-      <h3>1. mysql安装后密码无法登陆问题</h3>
+      <p>&#160; &#160; &#160; &#160;git作为一个分布式的版本控制工具，其具有集中式版本管理工具所不具有的优点。关于其具体优点不做过多的赘述，下面就git的简单使用进行简单记录</p>
 
-<ul>
-<li>这时你需要进入/etc/mysql目录下，然后查看里面的用户名和密码，然后输入<code>sudo vim debian.cnf</code></li>
-<li>使用这个文件中的用户名和密码进入mysql,假如debian.cnf中的用户名为debian-sys-maint,则：<code>mysql -u debian-sys-maint -p</code></li>
-<li>按回车，这时需要你输入密码，复制debian.cnf中的密码（不要手动输入，因为容易产生错误）。</li>
-<li>然后修改root用户的密码，如下操作</li>
-</ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">use mysql
-show tables;//查看mysql数据库中的表，会看到一个user表。
-select * from user;//查看一下这个表中是否有root用户，如果有：
-update user set password=password(&quot;root&quot;) where user=&quot;root&quot;;//更改root用户进入mysql的密码。
-flush privileges;
+<h3><strong>预备工作</strong></h3>
+
+<p>1.注册github账号</p>
+
+<p>2.window上安装git</p>
+
+<p>3.配置机器账号</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ git config --global user.name &quot;Your Name&quot;
+$ git config --global user.email &quot;email@example.com&quot;
 </code></pre></div>
-<ul>
-<li>quit退出mysql,然后用root登录 <code>mysql -u root -proot</code></li>
-</ul>
-
+<p>4.创建SSH Key</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
+</code></pre></div>
 <blockquote>
-<p>如果user表中没有root用户：用grant命令<code>grant all privileges on *.* to root@localhost identified by&#39;123&#39;</code>
-其中<em>.</em>代表所有数据库中的所有表，即database name.your table&#39;123&#39;表示为root用户的密码。</p>
+<p><strong>为什么GitHub需要SSH Key呢？</strong></p>
 
-<p>然后输入<code>flush privileges;</code></p>
+<p>&#160; &#160; &#160; &#160;因为GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的，而Git支持SSH协议，所以，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送。</p>
 
-<p>然后输入<code>select * from user;</code>查看一下user这个表中是否有root用户。如果有表示添加成功。</p>
+<p>&#160; &#160; &#160; &#160;当然，GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。</p>
 </blockquote>
 
-<h3>2. 配置远程连接</h3>
+<h3><strong>1. 从远程仓库克隆</strong></h3>
 
-<ul>
-<li><code>vim /etc/mysql/my.cnf</code> 找到bind-address = 127.0.0.1</li>
-<li>注释掉这行，如：#bind-address = 127.0.0.1 或者改为： bind-address = 0.0.0.0，此表示允许任意IP访问；或者自己指定一个IP地址。</li>
-<li>重启 MySQL：<code>sudo /etc/init.d/mysql restart</code></li>
-<li>登录mysql授权用户能进行远程连接 
-
-<ul>
-<li><code>grant all privileges on *.* to root@&quot;%&quot; identified by &quot;password&quot; with grant option;</code></li>
-<li><code>flush privileges;</code>
-&gt; 第一行命令解释如下，<em>.</em>：第一个<em>代表数据库名；第二个</em>代表表名。这里的意思是所有数据库里的所有表都授权给用户。root：授予root账号。“%”：表示授权的用户IP可以指定，这里代表任意的IP地址都能访问MySQL数据库。“password”：分配账号对应的密码，这里密码自己替换成你的mysql root帐号密码。</li>
-</ul></li>
-</ul>
-
+<p>假设你需要将某个远程仓库的代码clone下来，那么你就需要用该模块的知识。
+例如输入如下命令：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git clone git@github.com:shuzhou/shuzhou.github.io.git
+</code></pre></div>
     </div>
     <hr>
     <div id="uyan_frame"></div>

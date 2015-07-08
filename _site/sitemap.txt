@@ -11,7 +11,13 @@
 
 
 
-  /2015/04/13/IBMSyntheticDataGenerator(%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%99%A8)%E7%9A%84%E4%BD%BF%E7%94%A8.html
+  /2015/07/08/windows%20install%20jekyll%20environment%20.html
+
+  /2015/07/07/git%20use%20note.html
+
+  /2015/04/30/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%9A%84%E8%B7%AF%E5%BE%84%E8%8E%B7%E5%8F%96%E5%8F%8A%E5%9B%9E%E7%8E%AF%E9%97%AE%E9%A2%98.html
+
+  /2015/04/25/vim%E4%B8%AD%E6%8F%92%E4%BB%B6bundle%E9%85%8D%E7%BD%AE.html
 
   /2015/04/06/ubuntu%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E9%85%8D%E7%BD%AE.html
 

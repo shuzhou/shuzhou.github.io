@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>ubuntu下MySQL开启远程连接 | 张书洲的博客</title>
+<title>文件上传的路径获取及回环问题 | 张书洲的博客</title>
 <meta name="author" content="Shuzhou Zhang">
 
-  <meta name="keywords" content="ubuntu MySQL">
+  <meta name="keywords" content="java 环境配置">
 
 
 <link rel="shortcut icon" href="/public/img/deer3.png" />
@@ -241,53 +241,60 @@
             <div class="row">
   <div class="col-md-13 aside3-title">
     <br>
-    <h2 id="#identifier">ubuntu下MySQL开启远程连接</h2>
-    2014年12月12日
+    <h2 id="#identifier">文件上传的路径获取及回环问题</h2>
+    2015年04月30日
   </div>
   <div class="col-md-13 aside3-content">
     <hr>
     <div id="content">
-      <h3>1. mysql安装后密码无法登陆问题</h3>
+      <h3>1. ServletContext的getRealPath方法</h3>
+
+<p>request.getRealPath()这个方法以及被淘汰，所以建议不要使用。</p>
+
+<p>而获取ServletContext可以用</p>
 
 <ul>
-<li>这时你需要进入/etc/mysql目录下，然后查看里面的用户名和密码，然后输入<code>sudo vim debian.cnf</code></li>
-<li>使用这个文件中的用户名和密码进入mysql,假如debian.cnf中的用户名为debian-sys-maint,则：<code>mysql -u debian-sys-maint -p</code></li>
-<li>按回车，这时需要你输入密码，复制debian.cnf中的密码（不要手动输入，因为容易产生错误）。</li>
-<li>然后修改root用户的密码，如下操作</li>
+<li>request.getServletContext()（这种支持在servlet3.0以后的）</li>
+<li>request.getSession().getServletContext()</li>
 </ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">use mysql
-show tables;//查看mysql数据库中的表，会看到一个user表。
-select * from user;//查看一下这个表中是否有root用户，如果有：
-update user set password=password(&quot;root&quot;) where user=&quot;root&quot;;//更改root用户进入mysql的密码。
-flush privileges;
+
+<p>代码如下：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">String uploadPath = request.getSession().getServletContext().getRealPath(&quot;/&quot;);  
 </code></pre></div>
-<ul>
-<li>quit退出mysql,然后用root登录 <code>mysql -u root -proot</code></li>
-</ul>
-
 <blockquote>
-<p>如果user表中没有root用户：用grant命令<code>grant all privileges on *.* to root@localhost identified by&#39;123&#39;</code>
-其中<em>.</em>代表所有数据库中的所有表，即database name.your table&#39;123&#39;表示为root用户的密码。</p>
-
-<p>然后输入<code>flush privileges;</code></p>
-
-<p>然后输入<code>select * from user;</code>查看一下user这个表中是否有root用户。如果有表示添加成功。</p>
+<p>注意：该种方法中的&quot;/&quot;不能用File.separator代替，因为该种方法获取路径值为空</p>
 </blockquote>
 
-<h3>2. 配置远程连接</h3>
+<h3>2. 采用getResource(&quot;&quot;)获取</h3>
+
+<p>在web附件上传的时候使用该方法需要配合<code>substring()</code>函数使用，因为在web中使用该方法的获取的路径值形如<code>file:/C:/Java/apache-tomcat-8.0.12/webapps/bjl-gyw/WEB-INF/lib/commons-fileupload-1.3.jar!/org/apache/commons/fileupload/</code>，直接使用该路径会产生错误。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">String path = RequestContext.class.getResource(&quot;&quot;).getPath(); 
+</code></pre></div>
+<blockquote>
+<p>主要针对非servlet中，在一般的Java类中使用</p>
+</blockquote>
+
+<h3>3. 文件上传回环问题</h3>
+
+<p>在上传文件中，为了防止文件名冲突，一般选择对上传的文件进行重命名，自己重命名的规则一直习惯于ip+time+固定位随机数+原文件名，当我们服务器和客户端在同一台机器时，获取ip地址就产生了回环问题。</p>
+
+<p>当我们用到<code>httpServletRequest.getRemoteAddr()</code>的时候，我们在控制台上可以看到遇到了<code>request.getRemoteAddr()</code>获取的值为0:0:0:0:0:0:0:1，而不是127.0.0.1，这是什么原因呢？
+因为0:0:0:0:0:0:0:1是ipv6的格式，其等同于ipv4格式的127.0.0.1。</p>
+
+<p>解决办法如下：</p>
 
 <ul>
-<li><code>vim /etc/mysql/my.cnf</code> 找到bind-address = 127.0.0.1</li>
-<li>注释掉这行，如：#bind-address = 127.0.0.1 或者改为： bind-address = 0.0.0.0，此表示允许任意IP访问；或者自己指定一个IP地址。</li>
-<li>重启 MySQL：<code>sudo /etc/init.d/mysql restart</code></li>
-<li>登录mysql授权用户能进行远程连接 
-
-<ul>
-<li><code>grant all privileges on *.* to root@&quot;%&quot; identified by &quot;password&quot; with grant option;</code></li>
-<li><code>flush privileges;</code>
-&gt; 第一行命令解释如下，<em>.</em>：第一个<em>代表数据库名；第二个</em>代表表名。这里的意思是所有数据库里的所有表都授权给用户。root：授予root账号。“%”：表示授权的用户IP可以指定，这里代表任意的IP地址都能访问MySQL数据库。“password”：分配账号对应的密码，这里密码自己替换成你的mysql root帐号密码。</li>
-</ul></li>
+<li>最简单的是你本机访问的时候不用localhost而是用127.0.0.1，这样我们可以看到正常的输出结果</li>
+<li>修改本机的配置文件C:\Windows\System32\drivers\etc下面有一个localhost的文件，你打开后可以看到# ::1 localhost的配置，你可以删除。其中你也可以修改本机的ip，例如你修改一下127.0.0.1为127.0.0.2，当你以后访问的时间127.0.0.2就是你的本机的ip了.</li>
 </ul>
+
+<hr/>
+
+<p>参考链接：</p>
+
+<p>[1] <a href="http://blog.csdn.net/liunian02050328/article/details/8088761"> request.getRemoteAddr()获取的值的问题？</a></p>
+
+<p>[2] <a href="http://blog.csdn.net/fengshizty/article/details/28257927?utm_source=tuicool">JavaEE 保存文件获取绝对路径getResource(&quot;&quot;)和servletContext.getRealPath(&quot;/&quot;) </a></p>
 
     </div>
     <hr>
