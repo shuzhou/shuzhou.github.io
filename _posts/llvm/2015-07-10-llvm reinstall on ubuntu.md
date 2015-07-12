@@ -2,7 +2,7 @@
 layout: post
 title: ubuntu12.04重新配置llvm开发环境
 category: 配置
-tags: llvm clang 环境配置
+tags: llvm&clang 环境配置
 keywords: linux llvm 环境配置
 description: 
 ---
