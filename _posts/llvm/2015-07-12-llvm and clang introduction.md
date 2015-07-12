@@ -1,7 +1,7 @@
 ---
 layout: post
 title: llvm与clang简介
-category: 配置
+category: llvm
 tags: llvm clang 基本概念
 keywords: linux clang
 description: 
