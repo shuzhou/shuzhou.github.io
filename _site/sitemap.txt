@@ -11,6 +11,10 @@
 
 
 
+  /2015/07/12/llvm%20and%20clang%20introduction.html
+
+  /2015/07/10/llvm%20reinstall%20on%20ubuntu.html
+
   /2015/07/08/windows%20install%20jekyll%20environment%20.html
 
   /2015/07/07/git%20use%20note.html

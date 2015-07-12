@@ -2,8 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>关于 | 张书洲的博客</title>
+<title>ubuntu12.04重新配置llvm开发环境 | 张书洲的博客</title>
 <meta name="author" content="Shuzhou Zhang">
+
+  <meta name="keywords" content="linux llvm 环境配置">
 
 
 <link rel="shortcut icon" href="/public/img/deer3.png" />
@@ -303,56 +305,64 @@
             <div class="row">
   <div class="col-md-13 aside3-title">
     <br>
-    <h2 id="#identifier"><i class="fa fa-user fa-lg"></i></h2>
+    <h2 id="#identifier">ubuntu12.04重新配置llvm开发环境</h2>
+    2015年07月10日
   </div>
   <div class="col-md-13 aside3-content">
-    <div id="page-content">
-      <h3>关于博客</h3>
-<p style=font-size:18px><B><a href="http://zhangshuzhou.cn">zhangshuzhou.cn</a></B>首先感谢阮一峰老师、林安亚同学的相关文章和代码，自己是参考借鉴两位的文章和代码用github、jekyll、markdown搭建起来的这个博客。</p>
-<p style=font-size:18px><B><a href="http://zhangshuzhou.cn">zhangshuzhou.cn</a></B>机缘巧合，记得高考的那个假期，无意中听到了牛奶咖啡的<a target="_BLANK" href="http://play.baidu.com/?__methodName=mboxCtrl.playSong&__argsValue=31663579&fm=altg4&__o=aladin#">《明天，你好》</a>，然后在内心的深处产生了一种无名的触动。正如各种所唱的一样，昨天的我们已经走远，曾经肩并肩的伙伴也在举杯祝福后走散，送走昨天，迎来今天，拥抱明天，即使昨天和今天的我们已经伤痕累累，但是我们仍要在哭泣后继续微笑着奔跑，每一次哭泣都是我们的成长！勇敢的喊出“明天，你好”，无论声音是多么的渺小，它却提醒着我们，勇敢是什么！</p>
+    <hr>
+    <div id="content">
+      <p>&#160; &#160; &#160; &#160;近期小组用到llvm与clang进行项目开发，小组内部前期分别进行开发没有进行版本统一，但是后期进行系统集成测试的时候需要进行测试环境统一，由于自己之前安装的版本是3.5.1，测试的统一版本是3.6.0，所以需要重新安装llvm。将重新安装的步骤记录如下：</p>
 
+<h3><strong>1. 卸载llvm3.5.1</strong></h3>
 
-<h3>关于作者</h3>
-<p style=font-size:18px>姓名：张书洲</p>
-<p style=font-size:18px>职业：学生</p>
-<p style=font-size:18px>学历：<a target="_BLANK" href="http://www.uestc.edu.cn">电子科技大学</a>本科在读</p>
-<p style=font-size:18px>爱好：游泳、骑行</p>
+<p>转到llvm安装的根目录，输入如下命令进行卸载llvm</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo make uninstall
+</code></pre></div>
+<p>然后输入<code>clang --version</code>会发现clang已经被彻底删除</p>
 
-<center><img src="http://7xiif2.com1.z0.glb.clouddn.com/me.jpg" style="width:100%"></center>
+<h3><strong>2.安装llvm3.6.0</strong></h3>
 
+<p>在正式开始安装llvm3.6.0之前，我们需要做一些准备工作，在<a href="http://llvm.org/releases/download.html">http://llvm.org/releases/download.html</a>下载如下文件</p>
 
-<hr>
-<a href="">
-  <i class="fa fa-linkedin fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="" target="_blank">
-  <i class="fa fa-weibo fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="http://github.com/shuzhou" target="_blank">
-  <i class="fa fa-github fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="/pages/atom.xml" target="_blank">
-  <i class="fa fa-rss fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="mailto:zhangshuzhou.hi@163.com">
-  <i class="fa fa-envelope-o fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="">
-  <i class="fa fa-music fa-lg" style="color:#16a095;"></i>
-</a>
-<hr>
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1919735"></script>
-<!-- UY END -->
+<ul>
+<li>llvm源代码：llvm-3.6.0.src.tar.xz</li>
+<li>clang源代码：cfe-3.6.0.src.tar.xz</li>
+<li>compiler-rt源代码：compiler-rt-3.6.0.src.tar.xz</li>
+</ul>
 
+<p>然后依次输入如下命令进行安装llvm</p>
 
-<!--我叫<font color="#000080">L</font><font color="#FFA500">i</font><font color="#2E8B57">n</font><font color="#F08080">A</font><font color="#00CED1">n</font><font color="red">y</font><font color="#BA55D3">a</font>,--> 
+<p>1).解压源代码，并配置对应目录结构</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tar xf llvm-3.6.0.src.tar.xz
+mv llvm-3.6.0.src llvm
 
-<!--注释的内容-->
+cd llvm/tools
+tar xf cfe-3.6.0.src.tar.xz
+mv cfe-3.6.0.src clang
 
-
-
-
+cd ../projects
+tar xf compiler-rt-3.6.0.src.tar.xz
+mv compiler-rt-3.6.0.src compiler-rt
+</code></pre></div>
+<p>2).配置编译选项</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">cd ..
+./configure --enable-optimized CC=gcc CXX=g++
+</code></pre></div>
+<p>3).编译llvm</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">make -j2 //-j2代表用2线程进行源码编译
+</code></pre></div>
+<p>编译成功后提示</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">llvm[0]: ***** Completed Release+Asserts Build
+</code></pre></div>
+<p>4).安装编译好的llvm</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">make install
+</code></pre></div>
+<p>5).检查clang的版本</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">clang --version
+</code></pre></div>
+<p>如果还是旧版本，需要将/usr/bin/clang指向clang 3.6.0：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">ls -s /usr/local/bin/clang /usr/bin/clang
+</code></pre></div>
     </div>
     <hr>
     <div id="uyan_frame"></div>
@@ -360,7 +370,14 @@
 <!-- UY END -->
 
   </div>
+  <!-- 目录 -->
+  <div id="content_table" style="position:fixed;right:20px;top:120px;display:none;">
+    <div class="panel panel-success">
+      <div class="panel-body" id="nav"></div>
+    </div>
+  </div>
 </div>
+
 
           </div>
         </div>
