@@ -9,7 +9,11 @@
 
   /sitemap.txt
 
+  /page2/index.html
 
+
+
+  /2015/07/13/Tesseract-OCR%20environment%20construction%20on%20windows.html
 
   /2015/07/12/llvm%20and%20clang%20introduction.html
 

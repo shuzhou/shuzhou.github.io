@@ -6,6 +6,98 @@
     <description>My personal blog</description>
     
       <item>
+        <title>Windows下搭建Tesseract-OCR开发环境</title>
+        <link>/2015/07/13/Tesseract-OCR%20environment%20construction%20on%20windows.html</link>
+        <guid isPermaLink="true">/2015/07/13/Tesseract-OCR%20environment%20construction%20on%20windows.html</guid>
+        <pubDate>Mon, 13 Jul 2015 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;OCR(Optical Character Recognition):光学字符识别,是指对图片文件中的文字进行分析识别，获取的过程。&lt;/p&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;Tesseract：开源的OCR识别引擎，初期Tesseract引擎由HP实验室研发，后来贡献给了开源软件业，后经由Google进行改进，消除bug，优化，重新发布。当前版本为3.02。&lt;/p&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;项目地址：&lt;a href=&quot;code.google.com/p/tesseract-ocr&quot;&gt;code.google.com/p/tesseract-ocr&lt;/a&gt;【google code由于被墙，访问需要翻墙】&lt;/p&gt;
+
+&lt;h3&gt;&lt;strong&gt;1. 下载安装Tesseract-OCR引擎(3.0版本+才支持中文识别)&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;由于：&lt;a href=&quot;code.google.com/p/tesseract-ocr&quot;&gt;code.google.com/p/tesseract-ocr&lt;/a&gt;被墙，大家想下载也可以翻墙去下，地址为&lt;a href=&quot;https://code.google.com/p/tesseract-ocr/downloads/list&quot;&gt;https://code.google.com/p/tesseract-ocr/downloads/list&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;下载后直接点击安装，一路点击next即可。&lt;/p&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;为了方便我将自己的安装版本上传&lt;a href=&quot;http://pan.baidu.com/s/1hmHhc&quot;&gt;tesseract-ocr-setup-3.02.02.exe&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;&lt;strong&gt;2. 添加中文字库支持以识别中文&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;进入安装根目录，我们会发现安装目录下有tessdata目录，该目录存放的是语言字库文件，和在命令行界面中可能用到的参数所对应的文件。 &lt;/p&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;由于引擎默认安装只含了英文字库，没有包含中文字库，所以想要进行中文识别需要安装中文字体库。，可以到[https://code.google.com/p/tesseract-ocr/downloads/list]  下载对应的语言的字库文件。下载完成后解压，然后将该文件剪切到tessdata目录下去就可以了。&lt;/p&gt;
+
+&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;本机环境搭建所下载语言包&lt;a href=&quot;http://pan.baidu.com/s/1pJKbNFt&quot;&gt;tesseract-ocr-3.02.chi_sim.tar.gz&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;&lt;strong&gt;3. 进行文字识别测试&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;转到OCR引擎安装的根目录下，然后打开控制台，输入&lt;code&gt;tesseract&lt;/code&gt;命令，测试该命令是否可用。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;准备一张只含有英文和数字的图片进行测试英文识别测试&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;tesseract 1.png result //1.png是待识别的图片的文件名，result是识别结果输出的文档名称
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;输入上述命令后，会发现文件夹中多了一个result文件,里面即使识别结果。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;准备一张含有中文的图片进行中文识别测试&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;tesseract 1.png result  -l chi_sim //-l chi_sim 表示用简体中文字库
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&lt;strong&gt;附录&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Usage:tesseract imagename outputbase [-l lang] [-psm pagesegmode] &lt;/p&gt;
+
+&lt;p&gt;[configfile...]&lt;/p&gt;
+
+&lt;p&gt;pagesegmode values are:&lt;/p&gt;
+
+&lt;p&gt;0 = Orientation and script detection (OSD) only.&lt;/p&gt;
+
+&lt;p&gt;1 = Automatic page segmentation with OSD.&lt;/p&gt;
+
+&lt;p&gt;2 = Automatic page segmentation, but no OSD, or OCR&lt;/p&gt;
+
+&lt;p&gt;3 = Fully automatic page segmentation, but no OSD. (Default)&lt;/p&gt;
+
+&lt;p&gt;4 = Assume a single column of text of variable sizes.&lt;/p&gt;
+
+&lt;p&gt;5 = Assume a single uniform block of vertically aligned text.&lt;/p&gt;
+
+&lt;p&gt;6 = Assume a single uniform block of text.&lt;/p&gt;
+
+&lt;p&gt;7 = Treat the image as a single text line.&lt;/p&gt;
+
+&lt;p&gt;8 = Treat the image as a single word.&lt;/p&gt;
+
+&lt;p&gt;9 = Treat the image as a single word in a circle.&lt;/p&gt;
+
+&lt;p&gt;10 = Treat the image as a single character.&lt;/p&gt;
+
+&lt;p&gt;-l lang and/or -psm pagesegmode must occur before anyconfigfile.&lt;/p&gt;
+
+&lt;p&gt;tesseract imagename outputbase [-l lang] [-psm pagesegmode] [configfile...]&lt;/p&gt;
+
+&lt;p&gt;tesseract    图片名  输出文件名 -l 字库文件 -psm pagesegmode 配置文件&lt;/p&gt;
+
+&lt;p&gt;例如：&lt;/p&gt;
+
+&lt;p&gt;tesseract 1.png result  -l chi_sim -psm 7 nobatch&lt;/p&gt;
+
+&lt;p&gt;-l chi_sim 表示用简体中文字库（需要下载中文字库文件，解压后，存放到tessdata目录下去,字库文件扩展名为  .raineddata 简体中文字库文件名为:  chi_sim.traineddata）&lt;/p&gt;
+
+&lt;p&gt;-psm 7 表示告诉tesseract code.jpg图片是一行文本  这个参数可以减少识别错误率.  默认为 3&lt;/p&gt;
+
+&lt;p&gt;configfile 参数值为tessdata\configs 和  tessdata\tessconfigs 目录下的文件名&lt;/p&gt;
+</description>
+      </item>
+    
+      <item>
         <title>llvm与clang简介</title>
         <link>/2015/07/12/llvm%20and%20clang%20introduction.html</link>
         <guid isPermaLink="true">/2015/07/12/llvm%20and%20clang%20introduction.html</guid>

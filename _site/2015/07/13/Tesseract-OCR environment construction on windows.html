@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>vim中插件vundle配置 | 张书洲的博客</title>
+<title>Windows下搭建Tesseract-OCR开发环境 | 张书洲的博客</title>
 <meta name="author" content="Shuzhou Zhang">
 
-  <meta name="keywords" content="linux，vim，环境配置">
+  <meta name="keywords" content="环境配置 OCR 文字识别">
 
 
 <link rel="shortcut icon" href="/public/img/deer3.png" />
@@ -325,47 +325,96 @@
             <div class="row">
   <div class="col-md-13 aside3-title">
     <br>
-    <h2 id="#identifier">vim中插件vundle配置</h2>
-    2015年04月25日
+    <h2 id="#identifier">Windows下搭建Tesseract-OCR开发环境</h2>
+    2015年07月13日
   </div>
   <div class="col-md-13 aside3-content">
     <hr>
     <div id="content">
-      <p>有过vim配置的同学知道，vim配置后可以和IDE媲美，简直是当之无愧的神奇。</p>
+      <p>&#160; &#160; &#160; &#160;OCR(Optical Character Recognition):光学字符识别,是指对图片文件中的文字进行分析识别，获取的过程。</p>
 
-<p>现在我就为大家来介绍一款vim的管理插件 --vundle</p>
+<p>&#160; &#160; &#160; &#160;Tesseract：开源的OCR识别引擎，初期Tesseract引擎由HP实验室研发，后来贡献给了开源软件业，后经由Google进行改进，消除bug，优化，重新发布。当前版本为3.02。</p>
 
-<h3>1. vundle简介</h3>
+<p>&#160; &#160; &#160; &#160;项目地址：<a href="code.google.com/p/tesseract-ocr">code.google.com/p/tesseract-ocr</a>【google code由于被墙，访问需要翻墙】</p>
 
-<p>&#160; &#160; &#160; &#160;Vundle项目托管在github上 <a href="https://github.com/gmarik/vundle">https://github.com/gmarik/vundle</a>，其特色在于使用git来管理插件,更新方便，支持搜索，一键更新，从此只需要一个vimrc走天下.</p>
+<h3><strong>1. 下载安装Tesseract-OCR引擎(3.0版本+才支持中文识别)</strong></h3>
 
-<h3>2. vundle配置</h3>
+<p>&#160; &#160; &#160; &#160;由于：<a href="code.google.com/p/tesseract-ocr">code.google.com/p/tesseract-ocr</a>被墙，大家想下载也可以翻墙去下，地址为<a href="https://code.google.com/p/tesseract-ocr/downloads/list">https://code.google.com/p/tesseract-ocr/downloads/list</a>。</p>
+
+<p>&#160; &#160; &#160; &#160;下载后直接点击安装，一路点击next即可。</p>
+
+<p>&#160; &#160; &#160; &#160;为了方便我将自己的安装版本上传<a href="http://pan.baidu.com/s/1hmHhc">tesseract-ocr-setup-3.02.02.exe</a></p>
+
+<h3><strong>2. 添加中文字库支持以识别中文</strong></h3>
+
+<p>&#160; &#160; &#160; &#160;进入安装根目录，我们会发现安装目录下有tessdata目录，该目录存放的是语言字库文件，和在命令行界面中可能用到的参数所对应的文件。 </p>
+
+<p>&#160; &#160; &#160; &#160;由于引擎默认安装只含了英文字库，没有包含中文字库，所以想要进行中文识别需要安装中文字体库。，可以到[https://code.google.com/p/tesseract-ocr/downloads/list]  下载对应的语言的字库文件。下载完成后解压，然后将该文件剪切到tessdata目录下去就可以了。</p>
+
+<p>&#160; &#160; &#160; &#160;本机环境搭建所下载语言包<a href="http://pan.baidu.com/s/1pJKbNFt">tesseract-ocr-3.02.chi_sim.tar.gz</a></p>
+
+<h3><strong>3. 进行文字识别测试</strong></h3>
 
 <ul>
-<li>下载vundle</li>
+<li><p>转到OCR引擎安装的根目录下，然后打开控制台，输入<code>tesseract</code>命令，测试该命令是否可用。</p></li>
+<li><p>准备一张只含有英文和数字的图片进行测试英文识别测试</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tesseract 1.png result //1.png是待识别的图片的文件名，result是识别结果输出的文档名称
+</code></pre></div></li>
 </ul>
 
-<p>&#160; &#160; &#160; &#160;vundle的源码放在github上，所以先将vundle下载到本地</p>
-
-<p>&#160; &#160; &#160; &#160;<code>git clone https://github.com/gmarik/vundle.git  ~/.vim/bundle/vundle</code></p>
+<p>输入上述命令后，会发现文件夹中多了一个result文件,里面即使识别结果。</p>
 
 <ul>
-<li>配置vim</li>
+<li><p>准备一张含有中文的图片进行中文识别测试</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tesseract 1.png result  -l chi_sim //-l chi_sim 表示用简体中文字库
+</code></pre></div></li>
 </ul>
 
-<p>&#160; &#160; &#160; &#160;使用命令<code>cd ~</code>转换到当前用户的根目录下，然后修改.vimrc如所示<a href="https://github.com/shuzhou/config_file/blob/master/vimrc">https://github.com/shuzhou/config_file/blob/master/vimrc</a></p>
+<h3><strong>附录</strong></h3>
 
-<ul>
-<li>当前用户下根目录输入<code>vim</code>,然后输入<code>:BundleInstall</code>,等待插件安装，安装完毕后就可以使用了</li>
-</ul>
+<p>Usage:tesseract imagename outputbase [-l lang] [-psm pagesegmode] </p>
 
-<blockquote>
-<p><strong>注：</strong></p>
+<p>[configfile...]</p>
 
-<p>机器上没有安装git命令的童鞋请主动安装git命令</p>
+<p>pagesegmode values are:</p>
 
-<p><code>sudo apt-get install git</code></p>
-</blockquote>
+<p>0 = Orientation and script detection (OSD) only.</p>
+
+<p>1 = Automatic page segmentation with OSD.</p>
+
+<p>2 = Automatic page segmentation, but no OSD, or OCR</p>
+
+<p>3 = Fully automatic page segmentation, but no OSD. (Default)</p>
+
+<p>4 = Assume a single column of text of variable sizes.</p>
+
+<p>5 = Assume a single uniform block of vertically aligned text.</p>
+
+<p>6 = Assume a single uniform block of text.</p>
+
+<p>7 = Treat the image as a single text line.</p>
+
+<p>8 = Treat the image as a single word.</p>
+
+<p>9 = Treat the image as a single word in a circle.</p>
+
+<p>10 = Treat the image as a single character.</p>
+
+<p>-l lang and/or -psm pagesegmode must occur before anyconfigfile.</p>
+
+<p>tesseract imagename outputbase [-l lang] [-psm pagesegmode] [configfile...]</p>
+
+<p>tesseract    图片名  输出文件名 -l 字库文件 -psm pagesegmode 配置文件</p>
+
+<p>例如：</p>
+
+<p>tesseract 1.png result  -l chi_sim -psm 7 nobatch</p>
+
+<p>-l chi_sim 表示用简体中文字库（需要下载中文字库文件，解压后，存放到tessdata目录下去,字库文件扩展名为  .raineddata 简体中文字库文件名为:  chi_sim.traineddata）</p>
+
+<p>-psm 7 表示告诉tesseract code.jpg图片是一行文本  这个参数可以减少识别错误率.  默认为 3</p>
+
+<p>configfile 参数值为tessdata\configs 和  tessdata\tessconfigs 目录下的文件名</p>
 
     </div>
     <hr>

@@ -32,6 +32,10 @@
          <li><a href="#web" data-toggle="tab">web</a></li>
              <!-- 这里是aside1的读书、生活、科研、技术、绘画-->
          <li><a href="#git" data-toggle="tab">git</a></li>
+             <!-- 这里是aside1的读书、生活、科研、技术、绘画-->
+         <li><a href="#llvm" data-toggle="tab">llvm</a></li>
+             <!-- 这里是aside1的读书、生活、科研、技术、绘画-->
+         <li><a href="#ocr" data-toggle="tab">ocr</a></li>
         
         <li><a href="#tags" data-toggle="tab">标签</a></li>  
         <li><a class="pjaxlink" href="/pages/archive.html">归档</a></li>
@@ -57,8 +61,6 @@
             <div class="tab-pane" id="配置">
               <div class="list-group">
                 <!--<h2 class="center">配置</h2>-->     <!--原来aside2上面的大标题-->
-                
-                  <a href="/2015/07/12/llvm%20and%20clang%20introduction.html" class="list-group-item-lay pjaxlink">llvm与clang简介</a>
                 
                   <a href="/2015/07/10/llvm%20reinstall%20on%20ubuntu.html" class="list-group-item-lay pjaxlink">ubuntu12.04重新配置llvm开发环境</a>
                 
@@ -101,6 +103,24 @@
                 
               </div>
             </div>
+           
+            <div class="tab-pane" id="llvm">
+              <div class="list-group">
+                <!--<h2 class="center">llvm</h2>-->     <!--原来aside2上面的大标题-->
+                
+                  <a href="/2015/07/12/llvm%20and%20clang%20introduction.html" class="list-group-item-lay pjaxlink">llvm与clang简介</a>
+                
+              </div>
+            </div>
+           
+            <div class="tab-pane" id="ocr">
+              <div class="list-group">
+                <!--<h2 class="center">ocr</h2>-->     <!--原来aside2上面的大标题-->
+                
+                  <a href="/2015/07/13/Tesseract-OCR%20environment%20construction%20on%20windows.html" class="list-group-item-lay pjaxlink">Windows下搭建Tesseract-OCR开发环境</a>
+                
+              </div>
+            </div>
                 
           <div class="tab-pane" id="tags">
             <div class="panel-group" id="accordion">
@@ -110,10 +130,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#环境配置">环境配置</a>
-                      <span class="badge pull-right">6</span>
+                      <span class="badge pull-right">7</span>
                     </h4>
                   </div>
                   <div id="环境配置" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/07/13/Tesseract-OCR%20environment%20construction%20on%20windows.html' class="list-group-item pjaxlink">
+                        Windows下搭建Tesseract-OCR开发环境
+                      </a>
                     
                       <a  href='/2015/07/10/llvm%20reinstall%20on%20ubuntu.html' class="list-group-item pjaxlink">
                         ubuntu12.04重新配置llvm开发环境
@@ -237,31 +261,11 @@
                 <div class="panel panel-info">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#llvm">llvm</a>
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#llvm&clang">llvm&clang</a>
                       <span class="badge pull-right">2</span>
                     </h4>
                   </div>
-                  <div id="llvm" class="panel-collapse collapse">
-                    
-                      <a  href='/2015/07/12/llvm%20and%20clang%20introduction.html' class="list-group-item pjaxlink">
-                        llvm与clang简介
-                      </a>
-                    
-                      <a  href='/2015/07/10/llvm%20reinstall%20on%20ubuntu.html' class="list-group-item pjaxlink">
-                        ubuntu12.04重新配置llvm开发环境
-                      </a>
-                    
-                  </div>
-                </div>
-               
-                <div class="panel panel-info">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#clang">clang</a>
-                      <span class="badge pull-right">2</span>
-                    </h4>
-                  </div>
-                  <div id="clang" class="panel-collapse collapse">
+                  <div id="llvm&clang" class="panel-collapse collapse">
                     
                       <a  href='/2015/07/12/llvm%20and%20clang%20introduction.html' class="list-group-item pjaxlink">
                         llvm与clang简介
@@ -285,6 +289,22 @@
                     
                       <a  href='/2015/07/12/llvm%20and%20clang%20introduction.html' class="list-group-item pjaxlink">
                         llvm与clang简介
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#文字识别">文字识别</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="文字识别" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/07/13/Tesseract-OCR%20environment%20construction%20on%20windows.html' class="list-group-item pjaxlink">
+                        Windows下搭建Tesseract-OCR开发环境
                       </a>
                     
                   </div>
@@ -313,6 +333,11 @@
   <div class="col-md-12">
     <div class="panel panel-primary">
       <div class="panel-heading">最新文章</div>
+      
+        <a  href='/2015/07/13/Tesseract-OCR%20environment%20construction%20on%20windows.html' class="list-group-item pjaxlink clearfix">
+          Windows下搭建Tesseract-OCR开发环境
+          <span class="badge">2015年07月13日</span>
+        </a>
       
         <a  href='/2015/07/12/llvm%20and%20clang%20introduction.html' class="list-group-item pjaxlink clearfix">
           llvm与clang简介
@@ -357,11 +382,6 @@
         <a  href='/2014/12/12/ubuntu%E4%B8%8BMySQL%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.html' class="list-group-item pjaxlink clearfix">
           ubuntu下MySQL开启远程连接
           <span class="badge">2014年12月12日</span>
-        </a>
-      
-        <a  href='/2014/02/11/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html' class="list-group-item pjaxlink clearfix">
-          Java开发环境配置及常见问题
-          <span class="badge">2014年02月11日</span>
         </a>
       
     </div>
