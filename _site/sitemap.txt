@@ -13,6 +13,8 @@
 
 
 
+  /2015/07/23/DiscuzX%20UCenter%20KPPW%20install%20and%20env%20config%20.html
+
   /2015/07/13/Tesseract-OCR%20environment%20construction%20on%20windows.html
 
   /2015/07/12/llvm%20and%20clang%20introduction.html
