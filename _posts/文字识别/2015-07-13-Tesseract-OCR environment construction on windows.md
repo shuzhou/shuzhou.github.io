@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Windows下搭建Tesseract-OCR开发环境
-category: OCR
-tags: 环境配置 文字识别
+category: OCR  
+tags: 环境配置 文字识别 机器学习
 keywords: 环境配置 OCR 文字识别
 description: 
 ---

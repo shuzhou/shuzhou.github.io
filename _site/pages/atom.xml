@@ -6,6 +6,275 @@
     <description>My personal blog</description>
     
       <item>
+        <title>VS2013下编译Tesseract-OCR</title>
+        <link>/2016/01/16/complie-Tesseract-OCR-use-VS2013.html</link>
+        <guid isPermaLink="true">/2016/01/16/complie-Tesseract-OCR-use-VS2013.html</guid>
+        <pubDate>Sat, 16 Jan 2016 00:00:00 +0800</pubDate>
+        <description>&lt;h3&gt;1. 所需环境说明&lt;/h3&gt;
+
+&lt;p&gt;因为Tesseract在google code上，所以下载很多东西需要翻墙，如果不能翻墙的同学，可以根据文章整理的&lt;a href=&quot;http://pan.baidu.com/s/1i4s2Rdz&quot;&gt;文件链接&lt;/a&gt;进行打包下载。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://code.google.com/p/tesseract-ocr/&quot;&gt;点此访问Tesseract-ocr Google code主页&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;VS2013(建议版本统一，VS2015编译器增加了新的编译规则会导致代码失败)&lt;/li&gt;
+&lt;li&gt;python2.7及以上（由于python3语法不向前兼容python2语法，所以请勿安装python3）&lt;/li&gt;
+&lt;li&gt;jdk1.7及以上（图形界面调试环境需要使用）(配置参考&lt;a href=&quot;http://zhangshuzhou.cn/2014/02/11/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html&quot;&gt;这里&lt;/a&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;2. 配置目录结构&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://code.google.com/p/leptonica/downloads/detail?name=leptonica-1.68-win32-lib-include-dirs.zip&quot;&gt;下载&lt;/a&gt;&lt;code&gt;leptonica-1.68-win32-lib-include-dirs.zip&lt;/code&gt;，解压到&lt;code&gt;C:\BuildFolder&lt;/code&gt;(此目录可以是任何目录，此处只是以&lt;code&gt;C:\BuildFolder&lt;/code&gt;目录为例)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装linux命令模拟器（因为Leptonica需要使用一些简单的linux命令，例如&lt;code&gt;rm&lt;/code&gt;、&lt;code&gt;diff&lt;/code&gt;、&lt;code&gt;sleep&lt;/code&gt;等），官方推荐&lt;a href=&quot;http://tpgit.github.io/UnOfficialLeptDocs/vs2008/installing-cygwin.html&quot;&gt;cygwin&lt;/a&gt;,下载&lt;code&gt;cygwin.setup-x86_64.exe&lt;/code&gt;安装即可&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;安装过程汇中源的选择需要注意&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;经过以上步骤目录结构为：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;C:\BuildFolder\ 
+
+      include\
+         leptonica\
+         file1
+         file2
+         ......
+
+      lib\
+         giflib416-static-mtdll-debug.lib
+         giflib416-static-mtdll.lib
+         libjpeg8c-static-mtdll-debug.lib
+         libjpeg8c-static-mtdll.lib
+         liblept168-static-mtdll-debug.lib
+         liblept168-static-mtdll.lib
+         liblept168.dll
+         liblept168.lib
+         liblept168d.dll
+         liblept168d.lib
+         libpng143-static-mtdll-debug.lib
+         libpng143-static-mtdll.lib
+         libtesseract302.dll
+         libtesseract302.lib
+         libtesseract302d.dll
+         libtesseract302d.lib
+         libtesseract302-static.lib
+         libtesseract302-static-debug.lib
+         libtiff394-static-mtdll-debug.lib
+         libtiff394-static-mtdll.lib
+         zlib125-static-mtdll-debug.lib
+         zlib125-static-mtdll.lib
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://code.google.com/p/tesseract-ocr/downloads/detail?name=tesseract-ocr-3.02-vs2008.zip&quot;&gt;下载Tesseract-OCR VS2008&lt;/a&gt;工程 &lt;code&gt;tesseract-ocr-3.02-vs2008.zip&lt;/code&gt;，然后将结业文件夹内的&lt;code&gt;tesseract-ocr&lt;/code&gt;文件夹命名为&lt;code&gt;tesseract-3.02&lt;/code&gt;，拷到&lt;code&gt;C:\BuildFolder\&lt;/code&gt;文件夹中&lt;/p&gt;
+
+&lt;p&gt;文件夹结构如下：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;C:\BuildFolder\
+
+      include\
+         leptonica\
+      lib\
+      tesseract-3.02\
+         vs2008\
+            ambiguous_words\
+            classifier_tester\
+            cntraining\
+            combine_tessdata\
+            dawg2wordlist\
+            doc\
+            include\
+            libtesseract\
+               libtesseract.vcproj
+            mftraining\
+            port\
+            shapeclustering\
+            sphinx\
+            tesseract\
+               tesseract.vcproj
+            unicharset_extractor\
+            wordlist2dawg\
+
+            tesseract.sln
+            tesshelper.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;下载并解压&lt;a href=&quot;http://code.google.com/p/tesseract-ocr/downloads/detail?name=tesseract-3.02.tar.gz&quot;&gt;Tesseract-OCR源码&lt;/a&gt;文件&lt;code&gt;tesseract-ocr-3.02.02.tar.zip&lt;/code&gt;，将得到的&lt;code&gt;tesseract-ocr&lt;/code&gt;文件夹命名为&lt;code&gt;tesseract-3.02&lt;/code&gt;，拷到&lt;code&gt;C:\BuildFolder\&lt;/code&gt;文件夹中与原有的文件夹合并&lt;/p&gt;
+
+&lt;p&gt;得到如下目录结构:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;C:\BuildFolder\       
+      include\
+         leptonica\
+      lib\
+      tesseract-3.02\
+         api\
+         ccmain\
+         ccstruct\
+         ccutil\
+         classify\
+         config\
+         contrib\
+         cube\
+         cutil\
+         dict\
+         doc\
+         image\
+         java\
+         image\
+         neural_networks\
+         tessdata\
+         testing\
+         textord\
+         training\
+         viewer\
+         vs2008\
+         wordrec\
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;检查&lt;code&gt;C:\BuildFolder\include\tesseract&lt;/code&gt;是否存在，如过存在则删除。进入&lt;code&gt;C:\BuildFolder\tesseract-3.02\vs2008&lt;/code&gt;目录，打开cmd控制台，然后运行&lt;code&gt;python tesshelper.py .. copy ..\..\include&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;目录结构结果如下：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;C:\BuildFolder\       
+      include\
+         leptonica\
+         tesseract\
+      lib\
+      tesseract-3.02\
+         api\
+         ccmain\
+         ccstruct\
+         ccutil\
+         classify\
+         config\
+         contrib\
+         cube\
+         cutil\
+         dict\
+         doc\
+         image\
+         java\
+         image\
+         neural_networks\
+         tessdata\
+         testing\
+         textord\
+         training\
+         viewer\
+         vs2008\
+     wordrec\
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;3. 项目编译&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;用VS2013打开&lt;code&gt;C:\BuildFolder\tesseract-3.02\vs2008\tesseract.sln&lt;/code&gt;(忽略2013的提示即可)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在以下四种编译模式中选择一种进行编译&amp;lt;模式名称记为&lt;code&gt;ConfigurationName&lt;/code&gt;&amp;gt;，建议选择&lt;code&gt;DLL_Release&lt;/code&gt;版本（某些机器缺少库，导致DLL_Debug版本无法启动）&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;DLL_Debug
+DLL_Release
+LIB_Debug
+LIB_Release
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;首先编译&lt;code&gt;libtesseract302&lt;/code&gt;(在libtesseract302项目上右键-&amp;gt;选择生成)&lt;/p&gt;
+
+&lt;p&gt;编译完成后&lt;code&gt;C:\BuildFolder\tesseract-3.02\vs2008\&amp;lt;ConfigurationName&amp;gt;\&lt;/code&gt;文件夹下新增如下文件：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;static libraries:
+   libtesseract302-static.lib
+   libtesseract302-static-debug.lib
+
+DLLs:
+   libtesseract302.lib  (import library)
+   libtesseract302.dll
+   libtesseract302d.lib (import library)
+   libtesseract302d.dll
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;编译生成的文件会自动拷到&lt;code&gt;C:\BuildFolder\lib&lt;/code&gt;下即可&lt;/p&gt;
+
+&lt;p&gt;编译过程中会出现以下错误：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;1&amp;gt;  equationdetect.cpp
+1&amp;gt;..\..\ccmain\equationdetect.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+1&amp;gt;..\..\ccmain\equationdetect.cpp(251): error C2146: 语法错误: 缺少“}”(在标识符“銆”的前面)
+1&amp;gt;..\..\ccmain\equationdetect.cpp(251): error C2146: 语法错误: 缺少“;”(在标识符“銆”的前面)
+1&amp;gt;..\..\ccmain\equationdetect.cpp(251): error C2065: “銆”: 未声明的标识符
+1&amp;gt;..\..\ccmain\equationdetect.cpp(251): error C2146: 语法错误: 缺少“;”(在标识符“銆”的前面)
+1&amp;gt;..\..\ccmain\equationdetect.cpp(251): error C2065: “銆”: 未声明的标识符
+1&amp;gt;..\..\ccmain\equationdetect.cpp(251): error C2146: 语法错误: 缺少“;”(在标识符“銆”的前面)
+1&amp;gt;..\..\ccmain\equationdetect.cpp(251): error C2065: “銆”: 未声明的标识符
+1&amp;gt;..\..\ccmain\equationdetect.cpp(251): error C2143: 语法错误 : 缺少“;”(在“}”的前面)
+1&amp;gt;..\..\ccmain\equationdetect.cpp(253): error C2065: “kCharsToEx”: 未声明的标识符
+1&amp;gt;..\..\ccmain\equationdetect.cpp(253): fatal error C1903: 无法从以前的错误中恢复；正在停止编译
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;解决办法如下：&lt;/p&gt;
+
+&lt;p&gt;打开出错的文件，然后选择vs2013的菜单“文件 -- 高级保存选项”，在窗口中选择“简体中文（gb2312）-代码页936”，保存后重新编译生成&lt;code&gt;libtesseract302&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;然后再编译&lt;code&gt;tesseract&lt;/code&gt;（在项目tesseract上选择右键生成）&lt;/p&gt;
+
+&lt;p&gt;在对应编译模式的文件夹下将会产生可执行，其可执行文件下所示&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;LIB_Release: tesseract.exe
+LIB_Debug:   tesseractd.exe
+DLL_Release: tesseract-dll.exe
+DLL_Debug:   tesseract-dlld.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;测试的&lt;code&gt;tesseract.exe&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;在&lt;code&gt;C:\BuildFolder\&lt;/code&gt;目录下新建一个&lt;code&gt;testing&lt;/code&gt;文件夹，然后将如下文件拷到当前目录&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;liblept168d.dll//在C:\BuildFolder\lib目录下
+libtesseract302d.dll//在C:\BuildFolder\lib目录下
+tesseract-dll.exe//在C:\BuildFolder\tesseract-3.02\vs2008\&amp;lt;ConfigurationName&amp;gt;目录下
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;选取一张含有文字的截图放到当前目录下，然后打开cmd控制台，输入如下命令进行识别测试&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;tesseract-dll.exe test.jpg out
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果运行成功，会在当前目录下生成out.txt文件，打开即为识别结果&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;如果提示找不到英语语言包eng.traineddata，可以下载语言包按照提示放到对应目录下。&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;4. 安装图形界面调试环境&lt;/h3&gt;
+
+&lt;p&gt;需要jar包列表如下    &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;piccolo2d-core-3.0.jar//编译ScrollView.jar需要的
+piccolo2d-extras-3.0.jar//编译ScrollView.jar需要的
+ScrollView.jar//已编译好，在附录中
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果有人希望自己编译java代码，可以参考&lt;a href=&quot;https://code.google.com/p/tesseract-ocr/wiki/ViewerDebugging&quot;&gt;官方说明&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;修改源码 &lt;/p&gt;
+
+&lt;p&gt;在&lt;code&gt;tesseract\tesseractmain.cpp&lt;/code&gt;的以下代码&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;if (!api.ProcessPages(image, NULL, 0, &amp;amp;text_out)) {
+  fprintf(stderr, _(&quot;Error during processing.\n&quot;));
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;之前加入&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;api.SetVariable(&quot;tessedit_dump_pageseg_images&quot;, &quot;true&quot;);    //show no lines and no image picture
+api.SetVariable(&quot;textord_show_blobs&quot;, &quot;true&quot;);  //show blobs result
+api.SetVariable(&quot;textord_show_boxes&quot;, &quot;true&quot;);  //show blobs&#39; bounding boxes
+api.SetVariable(&quot;textord_tabfind_show_blocks&quot;, &quot;true&quot;); //show candidate tab-stops and tab vectors
+api.SetVariable(&quot;textord_tabfind_show_reject_blobs&quot;, &quot;true&quot;);   //show rejected blobs
+api.SetVariable(&quot;textord_tabfind_show_initial_partitions&quot;, &quot;true&quot;); //show initial partitions
+api.SetVariable(&quot;textord_tabfind_show_partitions&quot;, &quot;1&quot;);    //show final partitions
+api.SetVariable(&quot;textord_tabfind_show_initialtabs&quot;, &quot;true&quot;);    //show initial tab-stops
+api.SetVariable(&quot;textord_tabfind_show_finaltabs&quot;, &quot;true&quot;);  //show final tab vectors
+api.SetVariable(&quot;textord_tabfind_show_images&quot;, &quot;true&quot;); //show image blobs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以上代码控制Tesseract输出所有结果。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;启动调试程序&lt;/p&gt;
+
+&lt;p&gt;附件中&lt;code&gt;ScrollView.jar&lt;/code&gt;是已经编译好调试程序，打开控制台输入&lt;code&gt;java -jar ScrollView.jar&lt;/code&gt;即可运行服务端调试程序，如果该文件运行成功会在控制台输出以下信息：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;Socket started on port 8461
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;启动OCR识别引擎&lt;/p&gt;
+
+&lt;p&gt;打开控制台，输入&lt;code&gt;tesseract-dll.exe test.jpg out&lt;/code&gt;命令启动OCR引擎，即可看到调试界面&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      </item>
+    
+      <item>
         <title>DiscuzX UCenter KPPW安装与配置</title>
         <link>/2015/07/23/DiscuzX-UCenter-KPPW-install-and-env-config.html</link>
         <guid isPermaLink="true">/2015/07/23/DiscuzX-UCenter-KPPW-install-and-env-config.html</guid>

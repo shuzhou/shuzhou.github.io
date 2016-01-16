@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>git使用笔记 | 张书洲的博客</title>
+<title>Windows编译Tesseract-OCR及配置环境调试环境 | 张书洲的博客</title>
 <meta name="author" content="Shuzhou Zhang">
 
-  <meta name="keywords" content="git">
+  <meta name="keywords" content="环境配置 OCR 文字识别">
 
 
 <link rel="shortcut icon" href="/public/img/deer3.png" />
@@ -121,7 +121,7 @@
               <div class="list-group">
                 <!--<h2 class="center">OCR</h2>-->     <!--原来aside2上面的大标题-->
                 
-                  <a href="/2016/01/16/complie-Tesseract-OCR-use-VS2013.html" class="list-group-item-lay pjaxlink">VS2013下编译Tesseract-OCR</a>
+                  <a href="/2016/01/16/complie.html" class="list-group-item-lay pjaxlink">Windows编译Tesseract-OCR及配置环境调试环境</a>
                 
                   <a href="/2015/07/13/Tesseract-OCR-environment-construction-on-windows.html" class="list-group-item-lay pjaxlink">Windows下搭建Tesseract-OCR开发环境</a>
                 
@@ -141,8 +141,8 @@
                   </div>
                   <div id="环境配置" class="panel-collapse collapse">
                     
-                      <a  href='/2016/01/16/complie-Tesseract-OCR-use-VS2013.html' class="list-group-item pjaxlink">
-                        VS2013下编译Tesseract-OCR
+                      <a  href='/2016/01/16/complie.html' class="list-group-item pjaxlink">
+                        Windows编译Tesseract-OCR及配置环境调试环境
                       </a>
                     
                       <a  href='/2015/07/23/DiscuzX-UCenter-KPPW-install-and-env-config.html' class="list-group-item pjaxlink">
@@ -321,8 +321,8 @@
                   </div>
                   <div id="文字识别" class="panel-collapse collapse">
                     
-                      <a  href='/2016/01/16/complie-Tesseract-OCR-use-VS2013.html' class="list-group-item pjaxlink">
-                        VS2013下编译Tesseract-OCR
+                      <a  href='/2016/01/16/complie.html' class="list-group-item pjaxlink">
+                        Windows编译Tesseract-OCR及配置环境调试环境
                       </a>
                     
                       <a  href='/2015/07/13/Tesseract-OCR-environment-construction-on-windows.html' class="list-group-item pjaxlink">
@@ -341,8 +341,8 @@
                   </div>
                   <div id="机器学习" class="panel-collapse collapse">
                     
-                      <a  href='/2016/01/16/complie-Tesseract-OCR-use-VS2013.html' class="list-group-item pjaxlink">
-                        VS2013下编译Tesseract-OCR
+                      <a  href='/2016/01/16/complie.html' class="list-group-item pjaxlink">
+                        Windows编译Tesseract-OCR及配置环境调试环境
                       </a>
                     
                       <a  href='/2015/07/13/Tesseract-OCR-environment-construction-on-windows.html' class="list-group-item pjaxlink">
@@ -365,41 +365,284 @@
             <div class="row">
   <div class="col-md-13 aside3-title">
     <br>
-    <h2 id="#identifier">git使用笔记</h2>
-    2015年07月07日
+    <h2 id="#identifier">Windows编译Tesseract-OCR及配置环境调试环境</h2>
+    2016年01月16日
   </div>
   <div class="col-md-13 aside3-content">
     <hr>
     <div id="content">
-      <p>&#160; &#160; &#160; &#160;git作为一个分布式的版本控制工具，其具有集中式版本管理工具所不具有的优点。关于其具体优点不做过多的赘述，下面就git的简单使用进行简单记录</p>
+      <h3>所需环境说明</h3>
 
-<h3><strong>预备工作</strong></h3>
+<p>因为Tesseract在google code上，所以下载很多东西需要翻墙，如果不能翻墙的同学，可以根据文章整理的<a href="http://pan.baidu.com/s/1i4s2Rdz">文件链接</a>进行打包下载。</p>
 
-<p>1.注册github账号</p>
+<p><a href="https://code.google.com/p/tesseract-ocr/">点此访问Tesseract-ocr Google code主页</a></p>
 
-<p>2.window上安装git</p>
+<ol>
+<li>VS2013(建议版本统一，VS2015编译器增加了新的编译规则会导致代码失败)</li>
+<li>python2.7及以上（由于python3语法不向前兼容python2语法，所以请勿安装python3）</li>
+<li>jdk1.7及以上（图形界面调试环境需要使用）(配置参考<a href="http://zhangshuzhou.cn/2014/02/11/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">这里</a>)</li>
+</ol>
 
-<p>3.配置机器账号</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$ git config --global user.name "Your Name"
-$ git config --global user.email "email@example.com"
-</code></pre></div>
-<p>4.创建SSH Key</p>
-<div class="highlight"><pre><code class="language-" data-lang=""> ssh-keygen -t rsa -C "youremail@example.com"
-</code></pre></div>
+<h3>配置目录结构</h3>
+
+<ol>
+<li><a href="http://code.google.com/p/leptonica/downloads/detail?name=leptonica-1.68-win32-lib-include-dirs.zip">下载</a><code>leptonica-1.68-win32-lib-include-dirs.zip</code>，解压到<code>C:\BuildFolder</code>(此目录可以是任何目录，此处只是以<code>C:\BuildFolder</code>目录为例)</li>
+</ol>
+
+<ul>
+<li><p>安装linux命令模拟器（因为Leptonica需要使用一些简单的linux命令，例如<code>rm</code>、<code>diff</code>、<code>sleep</code>等），官方推荐<a href="http://tpgit.github.io/UnOfficialLeptDocs/vs2008/installing-cygwin.html">cygwin</a>,下载<code>cygwin.setup-x86_64.exe</code>安装即可</p>
+
 <blockquote>
-<p><strong>为什么GitHub需要SSH Key呢？</strong></p>
-
-<p>&#160; &#160; &#160; &#160;因为GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的，而Git支持SSH协议，所以，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送。</p>
-
-<p>&#160; &#160; &#160; &#160;当然，GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。</p>
+<p>安装过程汇中源的选择需要注意</p>
 </blockquote>
 
-<h3><strong>1. 从远程仓库克隆</strong></h3>
+<p>经过以上步骤目录结构为：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">C:\BuildFolder\ 
 
-<p>假设你需要将某个远程仓库的代码clone下来，那么你就需要用该模块的知识。
-例如输入如下命令：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">git clone git@github.com:shuzhou/shuzhou.github.io.git
+      include\
+         leptonica\
+         file1
+         file2
+         ......
+
+      lib\
+         giflib416-static-mtdll-debug.lib
+         giflib416-static-mtdll.lib
+         libjpeg8c-static-mtdll-debug.lib
+         libjpeg8c-static-mtdll.lib
+         liblept168-static-mtdll-debug.lib
+         liblept168-static-mtdll.lib
+         liblept168.dll
+         liblept168.lib
+         liblept168d.dll
+         liblept168d.lib
+         libpng143-static-mtdll-debug.lib
+         libpng143-static-mtdll.lib
+         libtesseract302.dll
+         libtesseract302.lib
+         libtesseract302d.dll
+         libtesseract302d.lib
+         libtesseract302-static.lib
+         libtesseract302-static-debug.lib
+         libtiff394-static-mtdll-debug.lib
+         libtiff394-static-mtdll.lib
+         zlib125-static-mtdll-debug.lib
+         zlib125-static-mtdll.lib
+</code></pre></div></li>
+<li><p><a href="http://code.google.com/p/tesseract-ocr/downloads/detail?name=tesseract-ocr-3.02-vs2008.zip">下载Tesseract-OCR VS2008</a>工程 <code>tesseract-ocr-3.02-vs2008.zip</code>，然后将结业文件夹内的<code>tesseract-ocr</code>文件夹命名为<code>tesseract-3.02</code>，拷到<code>C:\BuildFolder\</code>文件夹中</p>
+
+<p>文件夹结构如下：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">C:\BuildFolder\
+
+      include\
+         leptonica\
+      lib\
+      tesseract-3.02\
+         vs2008\
+            ambiguous_words\
+            classifier_tester\
+            cntraining\
+            combine_tessdata\
+            dawg2wordlist\
+            doc\
+            include\
+            libtesseract\
+               libtesseract.vcproj
+            mftraining\
+            port\
+            shapeclustering\
+            sphinx\
+            tesseract\
+               tesseract.vcproj
+            unicharset_extractor\
+            wordlist2dawg\
+
+            tesseract.sln
+            tesshelper.py
+</code></pre></div></li>
+<li><p>下载并解压<a href="http://code.google.com/p/tesseract-ocr/downloads/detail?name=tesseract-3.02.tar.gz">Tesseract-OCR源码</a>文件<code>tesseract-ocr-3.02.02.tar.zip</code>，将得到的<code>tesseract-ocr</code>文件夹命名为<code>tesseract-3.02</code>，拷到<code>C:\BuildFolder\</code>文件夹中与原有的文件夹合并</p>
+
+<p>得到如下目录结构:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">C:\BuildFolder\       
+      include\
+         leptonica\
+      lib\
+      tesseract-3.02\
+         api\
+         ccmain\
+         ccstruct\
+         ccutil\
+         classify\
+         config\
+         contrib\
+         cube\
+         cutil\
+         dict\
+         doc\
+         image\
+         java\
+         image\
+         neural_networks\
+         tessdata\
+         testing\
+         textord\
+         training\
+         viewer\
+         vs2008\
+         wordrec\
+</code></pre></div></li>
+<li><p>检查<code>C:\BuildFolder\include\tesseract</code>是否存在，如过存在则删除。进入<code>C:\BuildFolder\tesseract-3.02\vs2008</code>目录，打开cmd控制台，然后运行<code>python tesshelper.py .. copy ..\..\include</code></p>
+
+<p>目录结构结果如下：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">C:\BuildFolder\       
+      include\
+         leptonica\
+         tesseract\
+      lib\
+      tesseract-3.02\
+         api\
+         ccmain\
+         ccstruct\
+         ccutil\
+         classify\
+         config\
+         contrib\
+         cube\
+         cutil\
+         dict\
+         doc\
+         image\
+         java\
+         image\
+         neural_networks\
+         tessdata\
+         testing\
+         textord\
+         training\
+         viewer\
+         vs2008\
+     wordrec\
+</code></pre></div></li>
+</ul>
+
+<h3>项目编译</h3>
+
+<ol>
+<li>用VS2013打开<code>C:\BuildFolder\tesseract-3.02\vs2008\tesseract.sln</code>(忽略2013的提示即可)</li>
+</ol>
+
+<ul>
+<li><p>在以下四种编译模式中选择一种进行编译&lt;模式名称记为<code>ConfigurationName</code>&gt;，建议选择<code>DLL_Release</code>版本（某些机器缺少库，导致DLL_Debug版本无法启动）</p>
+<div class="highlight"><pre><code class="language-" data-lang="">DLL_Debug
+DLL_Release
+LIB_Debug
+LIB_Release
+</code></pre></div></li>
+<li><p>首先编译<code>libtesseract302</code>(在libtesseract302项目上右键-&gt;选择生成)</p>
+
+<p>编译完成后<code>C:\BuildFolder\tesseract-3.02\vs2008\&lt;ConfigurationName&gt;\</code>文件夹下新增如下文件：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">static libraries:
+   libtesseract302-static.lib
+   libtesseract302-static-debug.lib
+
+DLLs:
+   libtesseract302.lib  (import library)
+   libtesseract302.dll
+   libtesseract302d.lib (import library)
+   libtesseract302d.dll
 </code></pre></div>
+<blockquote>
+<p>编译生成的文件会自动拷到<code>C:\BuildFolder\lib</code>下即可</p>
+
+<p>编译过程中会出现以下错误：</p>
+</blockquote>
+
+<p>1&gt;  equationdetect.cpp
+1&gt;....\ccmain\equationdetect.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+1&gt;....\ccmain\equationdetect.cpp(251): error C2146: 语法错误: 缺少“}”(在标识符“銆”的前面)
+1&gt;....\ccmain\equationdetect.cpp(251): error C2146: 语法错误: 缺少“;”(在标识符“銆”的前面)
+1&gt;....\ccmain\equationdetect.cpp(251): error C2065: “銆”: 未声明的标识符
+1&gt;....\ccmain\equationdetect.cpp(251): error C2146: 语法错误: 缺少“;”(在标识符“銆”的前面)
+1&gt;....\ccmain\equationdetect.cpp(251): error C2065: “銆”: 未声明的标识符
+1&gt;....\ccmain\equationdetect.cpp(251): error C2146: 语法错误: 缺少“;”(在标识符“銆”的前面)
+1&gt;....\ccmain\equationdetect.cpp(251): error C2065: “銆”: 未声明的标识符
+1&gt;....\ccmain\equationdetect.cpp(251): error C2143: 语法错误 : 缺少“;”(在“}”的前面)
+1&gt;....\ccmain\equationdetect.cpp(253): error C2065: “kCharsToEx”: 未声明的标识符
+1&gt;....\ccmain\equationdetect.cpp(253): fatal error C1903: 无法从以前的错误中恢复；正在停止编译</p>
+
+<blockquote>
+<p>解决办法如下：</p>
+
+<p>打开出错的文件，然后选择vs2013的菜单“文件 -- 高级保存选项”，在窗口中选择“简体中文（gb2312）-代码页936”，保存后重新编译生成<code>libtesseract302</code></p>
+</blockquote></li>
+<li><p>然后再编译<code>tesseract</code>（在项目tesseract上选择右键生成）</p>
+
+<p>在对应编译模式的文件夹下将会产生可执行，其可执行文件下所示</p>
+<div class="highlight"><pre><code class="language-" data-lang="">LIB_Release: tesseract.exe
+LIB_Debug:   tesseractd.exe
+DLL_Release: tesseract-dll.exe
+DLL_Debug:   tesseract-dlld.exe
+</code></pre></div></li>
+<li><p>测试的<code>tesseract.exe</code></p>
+
+<p>在<code>C:\BuildFolder\</code>目录下新建一个<code>testing</code>文件夹，然后将如下文件拷到当前目录</p>
+<div class="highlight"><pre><code class="language-" data-lang="">liblept168d.dll//在C:\BuildFolder\lib目录下
+libtesseract302d.dll//在C:\BuildFolder\lib目录下
+tesseract-dll.exe//在C:\BuildFolder\tesseract-3.02\vs2008\&lt;ConfigurationName&gt;目录下
+</code></pre></div>
+<p>选取一张含有文字的截图放到当前目录下，然后打开cmd控制台，输入如下命令进行识别测试</p>
+<div class="highlight"><pre><code class="language-" data-lang="">tesseract-dll.exe test.jpg out
+</code></pre></div>
+<p>如果运行成功，会在当前目录下生成out.txt文件，打开即为识别结果</p>
+
+<blockquote>
+<p>如果提示找不到英语语言包eng.traineddata，可以下载语言包按照提示放到对应目录下。</p>
+</blockquote></li>
+</ul>
+
+<h3>安装图形界面调试环境</h3>
+
+<p>需要jar包列表如下    </p>
+<div class="highlight"><pre><code class="language-" data-lang="">piccolo2d-core-3.0.jar//编译ScrollView.jar需要的
+piccolo2d-extras-3.0.jar//编译ScrollView.jar需要的
+ScrollView.jar//已编译好，在附录中
+</code></pre></div>
+<p>如果有人希望自己编译java代码，可以参考<a href="https://code.google.com/p/tesseract-ocr/wiki/ViewerDebugging">官方说明</a></p>
+
+<ol>
+<li><p>修改源码 </p>
+
+<p>在<code>tesseract\tesseractmain.cpp</code>的以下代码</p>
+<div class="highlight"><pre><code class="language-" data-lang="">if (!api.ProcessPages(image, NULL, 0, &amp;text_out)) {
+  fprintf(stderr, _("Error during processing.\n"));
+}
+</code></pre></div>
+<p>之前加入</p>
+<div class="highlight"><pre><code class="language-" data-lang="">api.SetVariable("tessedit_dump_pageseg_images", "true");    //show no lines and no image picture
+api.SetVariable("textord_show_blobs", "true");  //show blobs result
+api.SetVariable("textord_show_boxes", "true");  //show blobs' bounding boxes
+api.SetVariable("textord_tabfind_show_blocks", "true"); //show candidate tab-stops and tab vectors
+api.SetVariable("textord_tabfind_show_reject_blobs", "true");   //show rejected blobs
+api.SetVariable("textord_tabfind_show_initial_partitions", "true"); //show initial partitions
+api.SetVariable("textord_tabfind_show_partitions", "1");    //show final partitions
+api.SetVariable("textord_tabfind_show_initialtabs", "true");    //show initial tab-stops
+api.SetVariable("textord_tabfind_show_finaltabs", "true");  //show final tab vectors
+api.SetVariable("textord_tabfind_show_images", "true"); //show image blobs
+</code></pre></div>
+<p>以上代码控制Tesseract输出所有结果。</p></li>
+</ol>
+
+<ul>
+<li><p>启动调试程序</p>
+
+<p>附件中<code>ScrollView.jar</code>是已经编译好调试程序，打开控制台输入<code>java -jar ScrollView.jar</code>即可运行服务端调试程序，如果该文件运行成功会在控制台输出以下信息：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">Socket started on port 8461
+</code></pre></div></li>
+<li><p>启动OCR识别引擎</p>
+
+<p>打开控制台，输入<code>tesseract-dll.exe test.jpg out</code>命令启动OCR引擎，即可看到调试界面</p></li>
+</ul>
+
     </div>
     <hr>
     <div id="uyan_frame"></div>
