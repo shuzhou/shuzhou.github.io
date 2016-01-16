@@ -2,8 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>关于 | 张书洲的博客</title>
+<title>windows下搭建jekyll调试博客 | 张书洲的博客</title>
 <meta name="author" content="Shuzhou Zhang">
+
+  <meta name="keywords" content="github 环境配置">
 
 
 <link rel="shortcut icon" href="/public/img/deer3.png" />
@@ -333,55 +335,141 @@
             <div class="row">
   <div class="col-md-13 aside3-title">
     <br>
-    <h2 id="#identifier"><i class="fa fa-user fa-lg"></i></h2>
+    <h2 id="#identifier">windows下搭建jekyll调试博客</h2>
+    2015年07月08日
   </div>
   <div class="col-md-13 aside3-content">
-    <div id="page-content">
-      <h3>关于博客</h3>
-<p style=font-size:18px><B><a href="http://zhangshuzhou.cn">zhangshuzhou.cn</a></B>首先感谢阮一峰老师、林安亚同学的相关文章和代码，自己是参考借鉴两位的文章和代码用github、jekyll、markdown搭建起来的这个博客。</p>
-<p style=font-size:18px><B><a href="http://zhangshuzhou.cn">zhangshuzhou.cn</a></B>机缘巧合，记得高考的那个假期，无意中听到了牛奶咖啡的<a target="_BLANK" href="http://play.baidu.com/?__methodName=mboxCtrl.playSong&__argsValue=31663579&fm=altg4&__o=aladin#">《明天，你好》</a>，然后在内心的深处产生了一种无名的触动。正如各种所唱的一样，昨天的我们已经走远，曾经肩并肩的伙伴也在举杯祝福后走散，送走昨天，迎来今天，拥抱明天，即使昨天和今天的我们已经伤痕累累，但是我们仍要在哭泣后继续微笑着奔跑，每一次哭泣都是我们的成长！勇敢的喊出“明天，你好”，无论声音是多么的渺小，它却提醒着我们，勇敢是什么！</p>
+    <hr>
+    <div id="content">
+      <p>首先对安装的整理流程做个简单叙述：</p>
 
+<ul>
+<li>安装Ruby及Devkit</li>
+<li>使用gem安装Jekyll</li>
+<li><p>安装 Pygments</p>
 
-<h3>关于作者</h3>
-<p style=font-size:18px>姓名：张书洲</p>
-<p style=font-size:18px>职业：学生</p>
-<p style=font-size:18px>学历：<a target="_BLANK" href="http://www.uestc.edu.cn">电子科技大学</a>本科在读</p>
-<p style=font-size:18px>爱好：游泳、骑行</p>
+<ul>
+<li>安装 Python</li>
+<li>安装 ‘Easy Install’</li>
+<li>用 “easy_install” 来安装 Pygments</li>
+</ul></li>
+<li><p>启动Jekyll</p></li>
+<li><p>故障诊断</p></li>
+</ul>
 
-<center><img src="http://7xiif2.com1.z0.glb.clouddn.com/me.jpg" style="width:100%"></center>
+<h3><strong>1. 安装Ruby及Devkit</strong></h3>
 
+<h4><strong>1). 安装Ruby</strong></h4>
 
-<hr>
-<a href="">
-  <i class="fa fa-linkedin fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="" target="_blank">
-  <i class="fa fa-weibo fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="http://github.com/shuzhou" target="_blank">
-  <i class="fa fa-github fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="/pages/atom.xml" target="_blank">
-  <i class="fa fa-rss fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="mailto:zhangshuzhou.hi@163.com">
-  <i class="fa fa-envelope-o fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="">
-  <i class="fa fa-music fa-lg" style="color:#16a095;"></i>
-</a>
-<hr>
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1919735"></script>
-<!-- UY END -->
+<ul>
+<li><p>前往 <a href="http://rubyinstaller.org/downloads/">http://rubyinstaller.org/downloads/</a></p></li>
+<li><p>在 “RubyInstallers” 部分，选择某个版本点击下载。（笔者安装版本<a href="http://pan.baidu.com/s/1hqpNBi0">下载</a>）
+例如， Ruby 2.0.0-p451 (x64) 是适于64位 Windows 机器上的 Ruby 2.0.0 x64 安装包。</p></li>
+<li><p>通过安装包安装</p>
 
+<ul>
+<li>最好保持默认的路径 C:\Ruby200-x64， 因为安装包明确提出 “请不要使用带有空格的文件夹 (如： Program Files)”。</li>
+<li>勾选 “Add Ruby executables to your PATH”，这样执行程序会被自动添加至 PATH 而避免不必要的头疼（建议将所有可勾选的项全部进行勾选）。</li>
+</ul></li>
+<li><p>验证ruby是否安装成功：打开控制台输入<code>ruby -v</code>，例如输出<code>ruby 2.1.5p273 (2014-11-13 revision 48405) [x64-mingw32]</code></p></li>
+</ul>
 
-<!--我叫<font color="#000080">L</font><font color="#FFA500">i</font><font color="#2E8B57">n</font><font color="#F08080">A</font><font color="#00CED1">n</font><font color="red">y</font><font color="#BA55D3">a</font>,--> 
+<h4><strong>2). 安装Devkit</strong></h4>
 
-<!--注释的内容-->
+<p>&#160; &#160; &#160; &#160;DevKit是windows平台下编译和使用本地C/C++扩展包的工具。它就是用来模拟Linux平台下的make,gcc,sh来进行编译。但是这个方法目前仅支持通过RubyInstaller安装的Ruby。</p>
 
+<ul>
+<li>再次前往 <a href="http://rubyinstaller.org/downloads/">http://rubyinstaller.org/downloads/</a></li>
+<li>下载同系统及 Ruby 版本相对应的 DevKit 安装包。 例如，DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe 适用于64位 Windows 系统上的 Ruby 2.0.0 x64。(笔者安装的ruby对应的Devkit版本<a href="http://pan.baidu.com/s/1dDcw84T">下载</a>)</li>
+<li>运行安装包并解压缩至某文件夹，如 C:\DevKit</li>
+<li><p>打开控制台，进入解压文件夹目录，输入如下命令</p>
+<div class="highlight"><pre><code class="language-" data-lang="">ruby dk.rb init
+ruby dk.rb install
+</code></pre></div>
+<blockquote>
+<p>安装Devkit出现问题汇总：</p>
 
+<p><a href="http://blog.sina.com.cn/s/blog_7444213001018fa7.html">http://blog.sina.com.cn/s/blog_7444213001018fa7.html</a></p>
+</blockquote></li>
+</ul>
 
+<h3><strong>2.使用gem安装Jekyll</strong></h3>
+
+<p>一般情况下经过第1步骤的安装gem已经安装，我们可以通过输入<code>gem -v</code>进行检查gem是否安装（Gem是一个管理Ruby库和程序的标准包）</p>
+
+<ul>
+<li><p>gem是可以选择源的，默认的源有点慢，可以使用ruby.taobao.org的源</p>
+
+<ul>
+<li><p>查看当源</p>
+
+<p>输入：   </p>
+<div class="highlight"><pre><code class="language-" data-lang="">gem sources list
+</code></pre></div>
+<p>显示：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">***CURRENT SOURCES ***
+https://rubygems.org/
+</code></pre></div></li>
+<li><p>添加新源</p>
+<div class="highlight"><pre><code class="language-" data-lang="">gem sources -a http://ruby.taobao.org/
+</code></pre></div></li>
+<li><p>删除默认源</p>
+<div class="highlight"><pre><code class="language-" data-lang="">gem sources --remove https://rubygems.org/
+</code></pre></div></li>
+<li><p>再次查看新源,确保只有<code>http://ruby.taobao.org/</code>就行了</p></li>
+</ul></li>
+<li><p>直接如下命令即可安装jekyll，该命令会安装jekyll及所有需要的依赖（但不包括插件）</p>
+<div class="highlight"><pre><code class="language-" data-lang="">gem install jekyll
+</code></pre></div></li>
+</ul>
+
+<blockquote>
+<p>网上有人说jekyll的版本1.4.3有个bug,但是我直接安装了最新版本，为2.5.3，没有碰到所谓的bug，估计是新版本已经修复，所以自动略过</p>
+</blockquote>
+
+<h3><strong>3.安装 Pygments</strong></h3>
+
+<p>&#160; &#160; &#160; &#160;Jekyll 里默认的语法高亮插件是 Pygments。 它需要安装 Python。</p>
+
+<p>&#160; &#160; &#160; &#160;不久之前，Jekyll 还添加另一个高亮引擎名为 Rouge， 尽管暂时不如 Pygments 支持那么多的语言，但它是原生 Ruby 程序，而不需要使用 Python。</p>
+
+<h4><strong>1). 安装 Python</strong></h4>
+
+<ul>
+<li>建议安装python 2(具体安装略去)</li>
+<li>配置python环境变量</li>
+<li><code>python –V</code>检查python是否安装成功</li>
+</ul>
+
+<h4><strong>2). 安装 ‘Easy Install’</strong></h4>
+
+<ul>
+<li><p>浏览 <a href="https://pypi.python.org/pypi/setuptools#installation-instructions">https://pypi.python.org/pypi/setuptools#installation-instructions</a> 来查看详细的安装指南。</p></li>
+<li><p>对于 Windows 7 的机器，下载 <a href="http://pan.baidu.com/s/1qWl38Gc">ez_setup.py</a> 并保存，例如，至C:\。 然后从命令行使用 Python 运行此文件：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">python “C:\ez_setup.py”
+</code></pre></div></li>
+<li><p>添加 ‘Python Scripts’ 路径 (如： C:\Python27\Scripts) 至 PATH</p></li>
+</ul>
+
+<h4><strong>3). 用 “easy_install” 来安装 Pygments</strong></h4>
+
+<ul>
+<li><p>确保 easy_install 已经正确安装，输入<code>easy_install --version</code>检查</p></li>
+<li><p>使用 “easy_install” 来安装 Pygments</p>
+<div class="highlight"><pre><code class="language-" data-lang="">easy_install Pygments
+</code></pre></div></li>
+</ul>
+
+<h3><strong>4.启动Jekyll</strong></h3>
+
+<p>进入待启动的网站目录，然后输入<code>jekyll serve</code>，然后既可以通过127.0.0.1:4000进行访问</p>
+
+<h3>参考博客</h3>
+
+<ol>
+<li><p><a href="http://blog.csdn.net/kong5090041/article/details/38408211">Windows 上安装 Jekyll </a></p></li>
+<li><p><a href="http://segmentfault.com/a/1190000000406011">使用Jekyll在Github上搭建个人博客</a></p></li>
+</ol>
 
     </div>
     <hr>
@@ -390,7 +478,14 @@
 <!-- UY END -->
 
   </div>
+  <!-- 目录 -->
+  <div id="content_table" style="position:fixed;right:20px;top:120px;display:none;">
+    <div class="panel panel-success">
+      <div class="panel-body" id="nav"></div>
+    </div>
+  </div>
 </div>
+
 
           </div>
         </div>

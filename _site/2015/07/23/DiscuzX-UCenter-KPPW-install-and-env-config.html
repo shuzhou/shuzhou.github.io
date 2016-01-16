@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>关于 | 张书洲的博客</title>
+<title>DiscuzX UCenter KPPW安装与配置 | 张书洲的博客</title>
 <meta name="author" content="Shuzhou Zhang">
 
 
@@ -333,55 +333,116 @@
             <div class="row">
   <div class="col-md-13 aside3-title">
     <br>
-    <h2 id="#identifier"><i class="fa fa-user fa-lg"></i></h2>
+    <h2 id="#identifier">DiscuzX UCenter KPPW安装与配置</h2>
+    2015年07月23日
   </div>
   <div class="col-md-13 aside3-content">
-    <div id="page-content">
-      <h3>关于博客</h3>
-<p style=font-size:18px><B><a href="http://zhangshuzhou.cn">zhangshuzhou.cn</a></B>首先感谢阮一峰老师、林安亚同学的相关文章和代码，自己是参考借鉴两位的文章和代码用github、jekyll、markdown搭建起来的这个博客。</p>
-<p style=font-size:18px><B><a href="http://zhangshuzhou.cn">zhangshuzhou.cn</a></B>机缘巧合，记得高考的那个假期，无意中听到了牛奶咖啡的<a target="_BLANK" href="http://play.baidu.com/?__methodName=mboxCtrl.playSong&__argsValue=31663579&fm=altg4&__o=aladin#">《明天，你好》</a>，然后在内心的深处产生了一种无名的触动。正如各种所唱的一样，昨天的我们已经走远，曾经肩并肩的伙伴也在举杯祝福后走散，送走昨天，迎来今天，拥抱明天，即使昨天和今天的我们已经伤痕累累，但是我们仍要在哭泣后继续微笑着奔跑，每一次哭泣都是我们的成长！勇敢的喊出“明天，你好”，无论声音是多么的渺小，它却提醒着我们，勇敢是什么！</p>
+    <hr>
+    <div id="content">
+      <p>注意点：</p>
 
+<ol>
+<li><p>下载的三个文件的安装包的编码要一致，否则整合容易失败</p></li>
+<li><p>本次安装配置所使用版本信息</p>
 
-<h3>关于作者</h3>
-<p style=font-size:18px>姓名：张书洲</p>
-<p style=font-size:18px>职业：学生</p>
-<p style=font-size:18px>学历：<a target="_BLANK" href="http://www.uestc.edu.cn">电子科技大学</a>本科在读</p>
-<p style=font-size:18px>爱好：游泳、骑行</p>
+<ul>
+<li>Discuz! X3.2</li>
+<li>UCenter 1.6.0</li>
+<li>KPPW2.6.2</li>
+</ul></li>
+</ol>
 
-<center><img src="http://7xiif2.com1.z0.glb.clouddn.com/me.jpg" style="width:100%"></center>
+<h3><strong>1.安装三个系统</strong></h3>
 
+<p>安装时Ucenter在discuz之前安装即可，安装顺序没有其他额外要求。</p>
 
-<hr>
-<a href="">
-  <i class="fa fa-linkedin fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="" target="_blank">
-  <i class="fa fa-weibo fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="http://github.com/shuzhou" target="_blank">
-  <i class="fa fa-github fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="/pages/atom.xml" target="_blank">
-  <i class="fa fa-rss fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="mailto:zhangshuzhou.hi@163.com">
-  <i class="fa fa-envelope-o fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="">
-  <i class="fa fa-music fa-lg" style="color:#16a095;"></i>
-</a>
-<hr>
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1919735"></script>
-<!-- UY END -->
+<ul>
+<li>按照官方安装说明安装kkpw</li>
+<li>按照官方安装说明安装Ucenter</li>
+<li>按照官方安装说明安装Discuz
 
+<ul>
+<li>安装时选择<code>仅安装 Discuz! X (手工指定已经安装的 UCenter Server)</code></li>
+<li>填写<code>UCenter 的 URL</code>一项是，不论是在服务器配置还是在本地配置都选择填写<code>http://127.0.0.1/UCenter安装的路径</code>，因为直接填写公网ip的话discuz无法识别，然后需要后期手动修改配置文件（修改方法详见第二章节问题1）</li>
+</ul></li>
+</ul>
 
-<!--我叫<font color="#000080">L</font><font color="#FFA500">i</font><font color="#2E8B57">n</font><font color="#F08080">A</font><font color="#00CED1">n</font><font color="red">y</font><font color="#BA55D3">a</font>,--> 
+<h3><strong>2.修改配置文件</strong></h3>
 
-<!--注释的内容-->
+<h4>1. 问题1：Discuz中集成的UCenter无法访问的问题</h4>
 
+<ul>
+<li><strong>问题描述：</strong></li>
+</ul>
 
+<p>&#160; &#160; &#160; &#160;登录Discuz后台会发现discuz中已经集成了UCenter,如果配置是在服务器进行，则UCenter点击后无法访问</p>
 
+<ul>
+<li><strong>解决办法：</strong></li>
+</ul>
+
+<p>&#160; &#160; &#160; &#160;修改discuz/config/config_ucenter.php,将<code>UC_API</code>的值改为UCenter的实际访问地址</p>
+
+<h4>2. 问题2：UCenter集成的应用Discuz通信失败</h4>
+
+<ul>
+<li><strong>问题描述：</strong></li>
+</ul>
+
+<p>&#160; &#160; &#160; &#160;登录Ucenter点击应用管理，看下整合的应用是否通信成功，如果没有通信成功请修改配置内容</p>
+
+<ul>
+<li><p><strong>解决办法：</strong></p>
+
+<ul>
+<li>确保应用的主URL是正确的</li>
+<li>应用IP如果空着请填写127.0.0.1</li>
+<li>确保两边通信秘一致</li>
+</ul></li>
+</ul>
+
+<h3><strong>3.在kppw中配置UCenter</strong></h3>
+
+<ul>
+<li><p>全局配置-&gt;会员整合-&gt;开启</p></li>
+<li><p>注意UCenter连接方式请选择mysql，否则容易出错</p></li>
+<li><p><code>UCenter IP 地址:</code>填写127.0.0.1（服务器整合的话没有填写该项可能会失败）</p></li>
+<li><p><code>UCenter应用 ID:</code>填写UCenter整合应用中最大ID号+1</p></li>
+<li><p>进入UCenter查看通信是否成功，如果不成功按照如下思路进行排查</p>
+
+<ul>
+<li><code>应用的主 URL:</code>是否正确</li>
+<li><code>应用 IP:</code>填写是否是127.0.0.1</li>
+<li>两边的通信密钥是够一致</li>
+</ul></li>
+</ul>
+
+<h3><strong>4.测试同步注册</strong></h3>
+
+<ul>
+<li><p>在KPPW于Discuz分别注册一个账号，然后观察UCenter中是否有该账号，如果有则同步注册已经成功一半</p>
+
+<ul>
+<li>若出现KPPW无法注册或者登录的情况，请检查KPPW于Discuz中的config_ucenter.php中内容除<code>UC\_KEY</code>和<code>UC\_APPID</code>项内容外全部一致，不一致时请参考Discuz配置文件修改KPPW配置文件</li>
+</ul></li>
+<li><p>在KPPW中用Discuz中刚才注册的账号登录，检测能否登录成功，登录成功后则KPPW数据库中添加了Discuz中刚才注册的账号</p></li>
+<li><p>同理在Discuz中用KPPW中刚才注册的账号登录，检测能否登录成功，登录成功后则Discuz数据库中添加了KPPW中刚才注册的账号</p></li>
+</ul>
+
+<p>如果以上步骤均成功执行，则说明三个系统的同步注册已经整合成功</p>
+
+<h3><strong>4.测试同步登录与注销</strong></h3>
+
+<ul>
+<li><p>在KPPW中登录一个账号，然后访问Discuz会发现该账号已经登录（注意：所登录的账号必须在两个系统的数据库已经存储）</p></li>
+<li><p>在Discuz中登录一个账号，然后访问KPPW会发现该账号已经登录（注意：所登录的账号必须在两个系统的数据库已经存储），如果失败请参考下面内容：</p>
+
+<ul>
+<li>Discuz设置<code>站长-&gt;Ucenter设置-&gt;是否允许其他应用的会员在站点激活:</code>选择是</li>
+<li>打开两个系统uc_client\data\cache\apps.php文件对比差异(发现KPPW的apps.php文件中的内容较Discus中apps.php文件多了一项配置)</li>
+<li>将KPPW的apps.php文件中的多出的配置复制到Discus中apps.php文件中，然后重新测试，发现已经成功</li>
+</ul></li>
+</ul>
 
     </div>
     <hr>
@@ -390,7 +451,14 @@
 <!-- UY END -->
 
   </div>
+  <!-- 目录 -->
+  <div id="content_table" style="position:fixed;right:20px;top:120px;display:none;">
+    <div class="panel panel-success">
+      <div class="panel-body" id="nav"></div>
+    </div>
+  </div>
 </div>
+
 
           </div>
         </div>

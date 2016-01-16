@@ -2,8 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>关于 | 张书洲的博客</title>
+<title>git使用笔记 | 张书洲的博客</title>
 <meta name="author" content="Shuzhou Zhang">
+
+  <meta name="keywords" content="git">
 
 
 <link rel="shortcut icon" href="/public/img/deer3.png" />
@@ -333,56 +335,41 @@
             <div class="row">
   <div class="col-md-13 aside3-title">
     <br>
-    <h2 id="#identifier"><i class="fa fa-user fa-lg"></i></h2>
+    <h2 id="#identifier">git使用笔记</h2>
+    2015年07月07日
   </div>
   <div class="col-md-13 aside3-content">
-    <div id="page-content">
-      <h3>关于博客</h3>
-<p style=font-size:18px><B><a href="http://zhangshuzhou.cn">zhangshuzhou.cn</a></B>首先感谢阮一峰老师、林安亚同学的相关文章和代码，自己是参考借鉴两位的文章和代码用github、jekyll、markdown搭建起来的这个博客。</p>
-<p style=font-size:18px><B><a href="http://zhangshuzhou.cn">zhangshuzhou.cn</a></B>机缘巧合，记得高考的那个假期，无意中听到了牛奶咖啡的<a target="_BLANK" href="http://play.baidu.com/?__methodName=mboxCtrl.playSong&__argsValue=31663579&fm=altg4&__o=aladin#">《明天，你好》</a>，然后在内心的深处产生了一种无名的触动。正如各种所唱的一样，昨天的我们已经走远，曾经肩并肩的伙伴也在举杯祝福后走散，送走昨天，迎来今天，拥抱明天，即使昨天和今天的我们已经伤痕累累，但是我们仍要在哭泣后继续微笑着奔跑，每一次哭泣都是我们的成长！勇敢的喊出“明天，你好”，无论声音是多么的渺小，它却提醒着我们，勇敢是什么！</p>
+    <hr>
+    <div id="content">
+      <p>&#160; &#160; &#160; &#160;git作为一个分布式的版本控制工具，其具有集中式版本管理工具所不具有的优点。关于其具体优点不做过多的赘述，下面就git的简单使用进行简单记录</p>
 
+<h3><strong>预备工作</strong></h3>
 
-<h3>关于作者</h3>
-<p style=font-size:18px>姓名：张书洲</p>
-<p style=font-size:18px>职业：学生</p>
-<p style=font-size:18px>学历：<a target="_BLANK" href="http://www.uestc.edu.cn">电子科技大学</a>本科在读</p>
-<p style=font-size:18px>爱好：游泳、骑行</p>
+<p>1.注册github账号</p>
 
-<center><img src="http://7xiif2.com1.z0.glb.clouddn.com/me.jpg" style="width:100%"></center>
+<p>2.window上安装git</p>
 
+<p>3.配置机器账号</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+</code></pre></div>
+<p>4.创建SSH Key</p>
+<div class="highlight"><pre><code class="language-" data-lang=""> ssh-keygen -t rsa -C "youremail@example.com"
+</code></pre></div>
+<blockquote>
+<p><strong>为什么GitHub需要SSH Key呢？</strong></p>
 
-<hr>
-<a href="">
-  <i class="fa fa-linkedin fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="" target="_blank">
-  <i class="fa fa-weibo fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="http://github.com/shuzhou" target="_blank">
-  <i class="fa fa-github fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="/pages/atom.xml" target="_blank">
-  <i class="fa fa-rss fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="mailto:zhangshuzhou.hi@163.com">
-  <i class="fa fa-envelope-o fa-lg" style="color:#16a095;"></i>
-</a>
-<a href="">
-  <i class="fa fa-music fa-lg" style="color:#16a095;"></i>
-</a>
-<hr>
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1919735"></script>
-<!-- UY END -->
+<p>&#160; &#160; &#160; &#160;因为GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的，而Git支持SSH协议，所以，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送。</p>
 
+<p>&#160; &#160; &#160; &#160;当然，GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。</p>
+</blockquote>
 
-<!--我叫<font color="#000080">L</font><font color="#FFA500">i</font><font color="#2E8B57">n</font><font color="#F08080">A</font><font color="#00CED1">n</font><font color="red">y</font><font color="#BA55D3">a</font>,--> 
+<h3><strong>1. 从远程仓库克隆</strong></h3>
 
-<!--注释的内容-->
-
-
-
-
+<p>假设你需要将某个远程仓库的代码clone下来，那么你就需要用该模块的知识。
+例如输入如下命令：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">git clone git@github.com:shuzhou/shuzhou.github.io.git
+</code></pre></div>
     </div>
     <hr>
     <div id="uyan_frame"></div>
@@ -390,7 +377,14 @@
 <!-- UY END -->
 
   </div>
+  <!-- 目录 -->
+  <div id="content_table" style="position:fixed;right:20px;top:120px;display:none;">
+    <div class="panel panel-success">
+      <div class="panel-body" id="nav"></div>
+    </div>
+  </div>
 </div>
+
 
           </div>
         </div>

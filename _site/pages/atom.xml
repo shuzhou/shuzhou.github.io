@@ -7,8 +7,8 @@
     
       <item>
         <title>DiscuzX UCenter KPPW安装与配置</title>
-        <link>/2015/07/23/DiscuzX%20UCenter%20KPPW%20install%20and%20env%20config%20.html</link>
-        <guid isPermaLink="true">/2015/07/23/DiscuzX%20UCenter%20KPPW%20install%20and%20env%20config%20.html</guid>
+        <link>/2015/07/23/DiscuzX-UCenter-KPPW-install-and-env-config.html</link>
+        <guid isPermaLink="true">/2015/07/23/DiscuzX-UCenter-KPPW-install-and-env-config.html</guid>
         <pubDate>Thu, 23 Jul 2015 00:00:00 +0800</pubDate>
         <description>&lt;p&gt;注意点：&lt;/p&gt;
 
@@ -119,8 +119,8 @@
     
       <item>
         <title>Windows下搭建Tesseract-OCR开发环境</title>
-        <link>/2015/07/13/Tesseract-OCR%20environment%20construction%20on%20windows.html</link>
-        <guid isPermaLink="true">/2015/07/13/Tesseract-OCR%20environment%20construction%20on%20windows.html</guid>
+        <link>/2015/07/13/Tesseract-OCR-environment-construction-on-windows.html</link>
+        <guid isPermaLink="true">/2015/07/13/Tesseract-OCR-environment-construction-on-windows.html</guid>
         <pubDate>Mon, 13 Jul 2015 00:00:00 +0800</pubDate>
         <description>&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;OCR(Optical Character Recognition):光学字符识别,是指对图片文件中的文字进行分析识别，获取的过程。&lt;/p&gt;
 
@@ -149,7 +149,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;转到OCR引擎安装的根目录下，然后打开控制台，输入&lt;code&gt;tesseract&lt;/code&gt;命令，测试该命令是否可用。&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;准备一张只含有英文和数字的图片进行测试英文识别测试&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;tesseract 1.png result //1.png是待识别的图片的文件名，result是识别结果输出的文档名称
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;tesseract 1.png result //1.png是待识别的图片的文件名，result是识别结果输出的文档名称
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -157,7 +157,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;准备一张含有中文的图片进行中文识别测试&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;tesseract 1.png result  -l chi_sim //-l chi_sim 表示用简体中文字库
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;tesseract 1.png result  -l chi_sim //-l chi_sim 表示用简体中文字库
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -211,8 +211,8 @@
     
       <item>
         <title>llvm与clang简介</title>
-        <link>/2015/07/12/llvm%20and%20clang%20introduction.html</link>
-        <guid isPermaLink="true">/2015/07/12/llvm%20and%20clang%20introduction.html</guid>
+        <link>/2015/07/12/llvm-and-clang-introduction.html</link>
+        <guid isPermaLink="true">/2015/07/12/llvm-and-clang-introduction.html</guid>
         <pubDate>Sun, 12 Jul 2015 00:00:00 +0800</pubDate>
         <description>&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;本篇文章主要针对llvm于clang的基本概念做个基本的阐述。刚开始接触llvm与clang的时候只知道clang是一个编译器，那llvm是什么？两者之间的关系是什么？为什么提到llvm必然会提到clang?本篇文章就这些基本概念做个简单的介绍。&lt;/p&gt;
 
@@ -258,15 +258,15 @@
     
       <item>
         <title>ubuntu12.04重新配置llvm开发环境</title>
-        <link>/2015/07/10/llvm%20reinstall%20on%20ubuntu.html</link>
-        <guid isPermaLink="true">/2015/07/10/llvm%20reinstall%20on%20ubuntu.html</guid>
+        <link>/2015/07/10/llvm-reinstall-on-ubuntu.html</link>
+        <guid isPermaLink="true">/2015/07/10/llvm-reinstall-on-ubuntu.html</guid>
         <pubDate>Fri, 10 Jul 2015 00:00:00 +0800</pubDate>
         <description>&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;近期小组用到llvm与clang进行项目开发，小组内部前期分别进行开发没有进行版本统一，但是后期进行系统集成测试的时候需要进行测试环境统一，由于自己之前安装的版本是3.5.1，测试的统一版本是3.6.0，所以需要重新安装llvm。将重新安装的步骤记录如下：&lt;/p&gt;
 
 &lt;h3&gt;&lt;strong&gt;1. 卸载llvm3.5.1&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;转到llvm安装的根目录，输入如下命令进行卸载llvm&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo make uninstall
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;sudo make uninstall
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后输入&lt;code&gt;clang --version&lt;/code&gt;会发现clang已经被彻底删除&lt;/p&gt;
 
@@ -283,7 +283,7 @@
 &lt;p&gt;然后依次输入如下命令进行安装llvm&lt;/p&gt;
 
 &lt;p&gt;1).解压源代码，并配置对应目录结构&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;tar xf llvm-3.6.0.src.tar.xz
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;tar xf llvm-3.6.0.src.tar.xz
 mv llvm-3.6.0.src llvm
 
 cd llvm/tools
@@ -295,30 +295,30 @@ tar xf compiler-rt-3.6.0.src.tar.xz
 mv compiler-rt-3.6.0.src compiler-rt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;2).配置编译选项&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;cd ..
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;cd ..
 ./configure --enable-optimized CC=gcc CXX=g++
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;3).编译llvm&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;make -j2 //-j2代表用2线程进行源码编译
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;make -j2 //-j2代表用2线程进行源码编译
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;编译成功后提示&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;llvm[0]: ***** Completed Release+Asserts Build
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;llvm[0]: ***** Completed Release+Asserts Build
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;4).安装编译好的llvm&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;make install
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;make install
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;5).检查clang的版本&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;clang --version
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;clang --version
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;如果还是旧版本，需要将/usr/bin/clang指向clang 3.6.0：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ls -s /usr/local/bin/clang /usr/bin/clang
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;ls -s /usr/local/bin/clang /usr/bin/clang
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       </item>
     
       <item>
         <title>windows下搭建jekyll调试博客</title>
-        <link>/2015/07/08/windows%20install%20jekyll%20environment%20.html</link>
-        <guid isPermaLink="true">/2015/07/08/windows%20install%20jekyll%20environment%20.html</guid>
+        <link>/2015/07/08/windows-install-jekyll-environment.html</link>
+        <guid isPermaLink="true">/2015/07/08/windows-install-jekyll-environment.html</guid>
         <pubDate>Wed, 08 Jul 2015 00:00:00 +0800</pubDate>
         <description>&lt;p&gt;首先对安装的整理流程做个简单叙述：&lt;/p&gt;
 
@@ -362,7 +362,7 @@ mv compiler-rt-3.6.0.src compiler-rt
 &lt;li&gt;下载同系统及 Ruby 版本相对应的 DevKit 安装包。 例如，DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe 适用于64位 Windows 系统上的 Ruby 2.0.0 x64。(笔者安装的ruby对应的Devkit版本&lt;a href=&quot;http://pan.baidu.com/s/1dDcw84T&quot;&gt;下载&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;运行安装包并解压缩至某文件夹，如 C:\DevKit&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;打开控制台，进入解压文件夹目录，输入如下命令&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ruby dk.rb init
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;ruby dk.rb init
 ruby dk.rb install
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
@@ -383,22 +383,22 @@ ruby dk.rb install
 &lt;li&gt;&lt;p&gt;查看当源&lt;/p&gt;
 
 &lt;p&gt;输入：   &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;gem sources list
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;gem sources list
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;显示：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;***CURRENT SOURCES ***
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;***CURRENT SOURCES ***
 https://rubygems.org/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;添加新源&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;gem sources -a http://ruby.taobao.org/
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;gem sources -a http://ruby.taobao.org/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;删除默认源&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;gem sources --remove https://rubygems.org/
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;gem sources --remove https://rubygems.org/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;再次查看新源,确保只有&lt;code&gt;http://ruby.taobao.org/&lt;/code&gt;就行了&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;直接如下命令即可安装jekyll，该命令会安装jekyll及所有需要的依赖（但不包括插件）&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;gem install jekyll
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;gem install jekyll
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -425,7 +425,7 @@ https://rubygems.org/
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;浏览 &lt;a href=&quot;https://pypi.python.org/pypi/setuptools#installation-instructions&quot;&gt;https://pypi.python.org/pypi/setuptools#installation-instructions&lt;/a&gt; 来查看详细的安装指南。&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;对于 Windows 7 的机器，下载 &lt;a href=&quot;http://pan.baidu.com/s/1qWl38Gc&quot;&gt;ez_setup.py&lt;/a&gt; 并保存，例如，至C:\。 然后从命令行使用 Python 运行此文件：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;python “C:\ez_setup.py”
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;python “C:\ez_setup.py”
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;添加 ‘Python Scripts’ 路径 (如： C:\Python27\Scripts) 至 PATH&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -435,7 +435,7 @@ https://rubygems.org/
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;确保 easy_install 已经正确安装，输入&lt;code&gt;easy_install --version&lt;/code&gt;检查&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;使用 “easy_install” 来安装 Pygments&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;easy_install Pygments
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;easy_install Pygments
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -454,8 +454,8 @@ https://rubygems.org/
     
       <item>
         <title>git使用笔记</title>
-        <link>/2015/07/07/git%20use%20note.html</link>
-        <guid isPermaLink="true">/2015/07/07/git%20use%20note.html</guid>
+        <link>/2015/07/07/git-use-note.html</link>
+        <guid isPermaLink="true">/2015/07/07/git-use-note.html</guid>
         <pubDate>Tue, 07 Jul 2015 00:00:00 +0800</pubDate>
         <description>&lt;p&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;git作为一个分布式的版本控制工具，其具有集中式版本管理工具所不具有的优点。关于其具体优点不做过多的赘述，下面就git的简单使用进行简单记录&lt;/p&gt;
 
@@ -466,11 +466,11 @@ https://rubygems.org/
 &lt;p&gt;2.window上安装git&lt;/p&gt;
 
 &lt;p&gt;3.配置机器账号&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ git config --global user.name &amp;quot;Your Name&amp;quot;
-$ git config --global user.email &amp;quot;email@example.com&amp;quot;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ git config --global user.name &quot;Your Name&quot;
+$ git config --global user.email &quot;email@example.com&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;4.创建SSH Key&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt; ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt; ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;为什么GitHub需要SSH Key呢？&lt;/strong&gt;&lt;/p&gt;
@@ -484,7 +484,7 @@ $ git config --global user.email &amp;quot;email@example.com&amp;quot;
 
 &lt;p&gt;假设你需要将某个远程仓库的代码clone下来，那么你就需要用该模块的知识。
 例如输入如下命令：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git clone git@github.com:shuzhou/shuzhou.github.io.git
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;git clone git@github.com:shuzhou/shuzhou.github.io.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       </item>
     
@@ -505,7 +505,7 @@ $ git config --global user.email &amp;quot;email@example.com&amp;quot;
 &lt;/ul&gt;
 
 &lt;p&gt;代码如下：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;String uploadPath = request.getSession().getServletContext().getRealPath(&amp;quot;/&amp;quot;);  
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;String uploadPath = request.getSession().getServletContext().getRealPath(&quot;/&quot;);  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;注意：该种方法中的&amp;quot;/&amp;quot;不能用File.separator代替，因为该种方法获取路径值为空&lt;/p&gt;
@@ -514,7 +514,7 @@ $ git config --global user.email &amp;quot;email@example.com&amp;quot;
 &lt;h3&gt;2. 采用getResource(&amp;quot;&amp;quot;)获取&lt;/h3&gt;
 
 &lt;p&gt;在web附件上传的时候使用该方法需要配合&lt;code&gt;substring()&lt;/code&gt;函数使用，因为在web中使用该方法的获取的路径值形如&lt;code&gt;file:/C:/Java/apache-tomcat-8.0.12/webapps/bjl-gyw/WEB-INF/lib/commons-fileupload-1.3.jar!/org/apache/commons/fileupload/&lt;/code&gt;，直接使用该路径会产生错误。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;String path = RequestContext.class.getResource(&amp;quot;&amp;quot;).getPath(); 
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;String path = RequestContext.class.getResource(&quot;&quot;).getPath(); 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;主要针对非servlet中，在一般的Java类中使用&lt;/p&gt;
@@ -597,19 +597,19 @@ $ git config --global user.email &amp;quot;email@example.com&amp;quot;
 &lt;h3&gt;&lt;strong&gt;1. 系统环境语言&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;需要修改文件/etc/default/locale，输入命令如下：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo vim /etc/default/locale
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;sudo vim /etc/default/locale
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;中文设置如下：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;LANG=&amp;quot;zh_CN.UTF-8&amp;quot;
-LANGUAGE=&amp;quot;zh_CN:zh&amp;quot;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;LANG=&quot;zh_CN.UTF-8&quot;
+LANGUAGE=&quot;zh_CN:zh&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;英文设置如下&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;LANG=&amp;quot;en_US.UTF-8&amp;quot;
-LANGUAGE=&amp;quot;en_US:en&amp;quot;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;LANG=&quot;en_US.UTF-8&quot;
+LANGUAGE=&quot;en_US:en&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;注：&lt;/strong&gt;重启服务器生效&lt;/p&gt;
@@ -622,13 +622,13 @@ LANGUAGE=&amp;quot;en_US:en&amp;quot;
 &lt;ul&gt;
 &lt;li&gt;打开/etc/environment,在末尾添加如下：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;LANG=&amp;quot;zh_CN.UTF-8&amp;quot;
-LANGUAGE=&amp;quot;zh_CN:zh:en_US:en&amp;quot;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;LANG=&quot;zh_CN.UTF-8&quot;
+LANGUAGE=&quot;zh_CN:zh:en_US:en&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt; 打开/var/lib/locales/supported.d/local修改为如下：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;en_US.UTF-8 UTF-8
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;en_US.UTF-8 UTF-8
 zh_CN.UTF-8 UTF-8
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
@@ -642,20 +642,20 @@ zh_CN.UTF-8 UTF-8
 &lt;/blockquote&gt;
 
 &lt;p&gt;经过该步骤的修改，在系统输入locale显示如下:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;LANG=en_US.UTF-8
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;LANG=en_US.UTF-8
 LANGUAGE=en_US:en
-LC_CTYPE=&amp;quot;en_US.UTF-8&amp;quot;
-LC_NUMERIC=&amp;quot;en_US.UTF-8&amp;quot;
-LC_TIME=&amp;quot;en_US.UTF-8&amp;quot;
-LC_COLLATE=&amp;quot;en_US.UTF-8&amp;quot;
-LC_MONETARY=&amp;quot;en_US.UTF-8&amp;quot;
-LC_MESSAGES=&amp;quot;en_US.UTF-8&amp;quot;
-LC_PAPER=&amp;quot;en_US.UTF-8&amp;quot;
-LC_NAME=&amp;quot;en_US.UTF-8&amp;quot;
-LC_ADDRESS=&amp;quot;en_US.UTF-8&amp;quot;
-LC_TELEPHONE=&amp;quot;en_US.UTF-8&amp;quot;
-LC_MEASUREMENT=&amp;quot;en_US.UTF-8&amp;quot;
-LC_IDENTIFICATION=&amp;quot;en_US.UTF-8&amp;quot;
+LC_CTYPE=&quot;en_US.UTF-8&quot;
+LC_NUMERIC=&quot;en_US.UTF-8&quot;
+LC_TIME=&quot;en_US.UTF-8&quot;
+LC_COLLATE=&quot;en_US.UTF-8&quot;
+LC_MONETARY=&quot;en_US.UTF-8&quot;
+LC_MESSAGES=&quot;en_US.UTF-8&quot;
+LC_PAPER=&quot;en_US.UTF-8&quot;
+LC_NAME=&quot;en_US.UTF-8&quot;
+LC_ADDRESS=&quot;en_US.UTF-8&quot;
+LC_TELEPHONE=&quot;en_US.UTF-8&quot;
+LC_MEASUREMENT=&quot;en_US.UTF-8&quot;
+LC_IDENTIFICATION=&quot;en_US.UTF-8&quot;
 LC_ALL=
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
@@ -745,21 +745,21 @@ LC_ALL=
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
       &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
            &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;
-           &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;fruit&amp;#39;s color: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;fruit&#39;s color: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;
 
       &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;grow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-           &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;grow...&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;class Apple(Fruit):                               #继承了父类
+           &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;grow...&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;class Apple(Fruit):                               #继承了父类
       def __init__(self, color):                  
            Fruit.__init__(self, color)            #显示调用父类的__init__方法（Python不会自动调用基本类的__init__()）
-           print &amp;quot;apple&amp;#39;s color: %s&amp;quot; % self.color
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;class Banana(Fruit):                              #继承了父类
+           print &quot;apple&#39;s color: %s&quot; % self.color
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;class Banana(Fruit):                              #继承了父类
       def __init__(self, color):                  
            Fruit.__init__(self, color)            #显示调用父类的__init__方法
-           print &amp;quot;banana&amp;#39;s color:%s&amp;quot; %s self.color
+           print &quot;banana&#39;s color:%s&quot; %s self.color
 
       def grow(self):                             #覆盖了父类的grow方法
-           print &amp;quot;banana grow...&amp;quot;
+           print &quot;banana grow...&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; Python 中的__init__（）方法类似与Java中的构造函数，Java构造函数中的self默认存在，不需要在构造函数声明的时候进行显示指明，但是Python需要在__init__()函数中显示指明（但是ID调用时不用显示进行self传递）&lt;/p&gt;
@@ -771,7 +771,7 @@ Java中的接口接口是为了解决不能多继承的问题，由于Python中�
 由于接口是特殊的抽象类，接口没有数据成员，而是一组未实现的方法的集合。要想实现接口的功能，完全可以用一个空的类来做。
 例如：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    class Fruit():  
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;    class Fruit():  
         def add(self):  
              pass  
         def remove(self):  
@@ -801,10 +801,10 @@ Java中的接口接口是为了解决不能多继承的问题，由于Python中�
 &lt;li&gt;按回车，这时需要你输入密码，复制debian.cnf中的密码（不要手动输入，因为容易产生错误）。&lt;/li&gt;
 &lt;li&gt;然后修改root用户的密码，如下操作&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;use mysql
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;use mysql
 show tables;//查看mysql数据库中的表，会看到一个user表。
 select * from user;//查看一下这个表中是否有root用户，如果有：
-update user set password=password(&amp;quot;root&amp;quot;) where user=&amp;quot;root&amp;quot;;//更改root用户进入mysql的密码。
+update user set password=password(&quot;root&quot;) where user=&quot;root&quot;;//更改root用户进入mysql的密码。
 flush privileges;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
@@ -899,14 +899,14 @@ ${type_declaration}
 &lt;li&gt;window－&amp;gt;preference－&amp;gt;java－&amp;gt;code    styple－&amp;gt;code Template -&amp;gt; Comments-&amp;gt;Types&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/**
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;/**
 * @author ${user}
 * ${date} ${time}
 * ${tags}
 */
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;修改为&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/**
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;/**
 * @author Tree
 * ${date} ${time}
 * ${tags}
@@ -956,7 +956,7 @@ ${type_declaration}
 &lt;/ol&gt;
 
 &lt;blockquote&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;[...未完待续，实时更新中...]
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;[...未完待续，实时更新中...]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 </description>
       </item>

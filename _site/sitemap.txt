@@ -1,29 +1,29 @@
 
-  /pages/about.html
+  /pages/about
 
-  /pages/archive.html
+  /pages/archive
 
   /pages/atom.xml
 
-  /index.html
+  /
 
   /sitemap.txt
 
-  /page2/index.html
+  /page2/
 
 
 
-  /2015/07/23/DiscuzX%20UCenter%20KPPW%20install%20and%20env%20config%20.html
+  /2015/07/23/DiscuzX-UCenter-KPPW-install-and-env-config.html
 
-  /2015/07/13/Tesseract-OCR%20environment%20construction%20on%20windows.html
+  /2015/07/13/Tesseract-OCR-environment-construction-on-windows.html
 
-  /2015/07/12/llvm%20and%20clang%20introduction.html
+  /2015/07/12/llvm-and-clang-introduction.html
 
-  /2015/07/10/llvm%20reinstall%20on%20ubuntu.html
+  /2015/07/10/llvm-reinstall-on-ubuntu.html
 
-  /2015/07/08/windows%20install%20jekyll%20environment%20.html
+  /2015/07/08/windows-install-jekyll-environment.html
 
-  /2015/07/07/git%20use%20note.html
+  /2015/07/07/git-use-note.html
 
   /2015/04/30/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%9A%84%E8%B7%AF%E5%BE%84%E8%8E%B7%E5%8F%96%E5%8F%8A%E5%9B%9E%E7%8E%AF%E9%97%AE%E9%A2%98.html
 
